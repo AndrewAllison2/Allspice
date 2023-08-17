@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration.UserSecrets;
 
 namespace Allspice.Controllers;
 
@@ -75,6 +76,23 @@ public class RecipesController : ControllerBase
       recipeData.CreatorId = userInfo.Id;
       Recipe recipe = _recipesService.UpdateRecipe(recipeId, recipeData);
       return Ok(recipe);
+      }
+      catch (Exception e)
+      {
+      return BadRequest(e.Message);
+      }
+    }
+
+    [Authorize]
+    [HttpDelete("{recipeId}")]
+
+    public async Task<ActionResult<string>> RemoveRecipe(int recipeId)
+    {
+      try
+      {
+      Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+      _recipesService.RemoveRecipe(recipeId, userInfo.Id);
+      return Ok("This recipe has been deleted!");
       }
       catch (Exception e)
       {

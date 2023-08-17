@@ -40,6 +40,17 @@ public class RecipesService
     return recipes;
     }
 
+    internal void RemoveRecipe(int recipeId, string id)
+    {
+    Recipe recipe = GetRecipeById(recipeId);
+
+    if (recipe.CreatorId != id)
+    {
+      throw new Exception("You are not the creator of this recipe. You cannot remove it.");
+    }
+    _recipesRepository.RemoveRecipe(recipeId);
+    }
+
     internal Recipe UpdateRecipe(int recipeId, Recipe recipeData)
     {
     Recipe ogRecipe = GetRecipeById(recipeId);

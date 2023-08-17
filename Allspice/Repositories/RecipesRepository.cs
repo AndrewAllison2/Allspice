@@ -9,13 +9,13 @@ public class RecipesRepository
 {
   private readonly IDbConnection _db;
 
-    public RecipesRepository(IDbConnection db)
-    {
-        _db = db;
-    }
+  public RecipesRepository(IDbConnection db)
+  {
+    _db = db;
+  }
 
-    internal int CreateRecipe(Recipe recipeData)
-    {
+  internal int CreateRecipe(Recipe recipeData)
+  {
     string sql = @"
     INSERT INTO recipes (title, instructions, img, category, creatorId)
     VALUES (@Title, @Instructions, @Img, @Category, @CreatorId);
@@ -24,10 +24,10 @@ public class RecipesRepository
 
     int recipeId = _db.ExecuteScalar<int>(sql, recipeData);
     return recipeId;
-    }
+  }
 
-    internal Recipe GetRecipeById(int recipeId)
-    {
+  internal Recipe GetRecipeById(int recipeId)
+  {
     string sql = @"
     SELECT
     rep.*,
@@ -46,10 +46,10 @@ public class RecipesRepository
       },
       new { recipeId }).FirstOrDefault();
     return recipe;
-    }
+  }
 
-    internal List<Recipe> GetRecipes()
-    {
+  internal List<Recipe> GetRecipes()
+  {
     string sql = @"
     SELECT
     rep.*,
@@ -67,12 +67,18 @@ public class RecipesRepository
       }
     ).ToList();
     return recipes;
-    }
+  }
+
+  internal void RemoveRecipe(int recipeId)
+  {
+    string sql = "DELETE FROM recipes WHERE id = @recipeId LIMIT 1;";
+
+    _db.Execute(sql, new { recipeId });
+  }
 
 
-// FIXME FAILING 1 TEST ON EDIT
-    internal Recipe UpdateRecipe(Recipe ogRecipe)
-    {
+  internal Recipe UpdateRecipe(Recipe ogRecipe)
+  {
     string sql = @"
     UPDATE recipes
     SET
@@ -87,5 +93,6 @@ public class RecipesRepository
 
     Recipe recipe = _db.QueryFirstOrDefault<Recipe>(sql, ogRecipe);
     return recipe;
-    }
+  }
 }
+
