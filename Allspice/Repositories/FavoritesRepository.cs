@@ -54,4 +54,19 @@ public class FavoritesRepository
 
     return favorites;
     }
+
+    internal Favorite GetFavoriteById(int favoriteId)
+    {
+    string sql = "SELECT * FROM favorites WHERE id = @favoriteId;";
+
+    Favorite favorite = _db.QueryFirstOrDefault<Favorite>(sql, new { favoriteId });
+    return favorite;
+    }
+
+    internal void RemoveFavorite(int favoriteId)
+    {
+    string sql = "DELETE FROM favorites WHERE id = @favoriteId LIMIT 1";
+
+    _db.Execute(sql, new { favoriteId });
+    }
 }

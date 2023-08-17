@@ -35,4 +35,20 @@ public class FavoritesController : ControllerBase
         return BadRequest(e.Message);
       }
     }
+
+    [Authorize]
+    [HttpDelete("{favoriteId}")]
+    public async Task<ActionResult<string>> RemoveFavorite(int favoriteId)
+    {
+      try 
+      {
+      Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+      _favoritesService.RemoveFavorite(favoriteId, userInfo.Id);
+      return Ok("Item has been removed from your favorites");
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
 }
