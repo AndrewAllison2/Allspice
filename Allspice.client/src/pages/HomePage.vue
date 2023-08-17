@@ -2,7 +2,7 @@
   <div class="container-fluid">
 
     <div class="row">
-      <div class="hero-img m-auto mt-4">
+      <div class="hero-img m-auto my-4">
         <div class="col-12 m-auto">
 
           <div class="d-flex justify-content-end align-items-center">
@@ -72,7 +72,6 @@ export default {
 .hero-img{
   background-image: url(https://images.unsplash.com/photo-1466637574441-749b8f19452f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNvb2tpbmclMjBzdGF0aW9ufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60);
   background-size: cover;
-  background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 1%;
