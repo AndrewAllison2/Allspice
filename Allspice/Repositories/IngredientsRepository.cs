@@ -13,4 +13,11 @@ public class IngredientsRepository
     {
         _db = db;
     }
+
+
+// TODO WRITE SQL STRING AND METHOD IN REPO
+    internal Ingredient GetIngredientById(int ingredientId)
+    {
+        throw new NotImplementedException();
+    }
 }

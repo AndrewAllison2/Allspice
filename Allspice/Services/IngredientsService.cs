@@ -13,4 +13,23 @@ public class IngredientsService
     {
         _ingredientsRepository = ingredientsRepository;
     }
+
+    internal Ingredient CreateIngredient(Ingredient ingredientData, string id)
+    {
+    int ingredientId = _ingredientsRepository.CreateIngredient(ingredientData);
+
+    Ingredient ingredient = GetIngredientById(ingredientId);
+    return ingredient;
+    }
+
+  internal Ingredient GetIngredientById(int ingredientId)
+  {
+    Ingredient ingredient = _ingredientsRepository.GetIngredientById(ingredientId);
+
+    if (ingredient == null)
+    {
+      throw new Exception("No ingredient by that ID");
+    }
+    return ingredient;
+  }
 }
