@@ -9,3 +9,13 @@ public class Favorite
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
 }
+
+public class RecipeFavorite : Favorite
+{
+  public int FavoriteId { get; set; }
+}
+
+public class AccountFavorite : Account
+{
+  public int FavoriteId { get; set; }
+}

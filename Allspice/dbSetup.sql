@@ -48,4 +48,14 @@ DROP TABLE ingredients;
 
 DROP TABLE favorites;
 
+SELECT * FROM favorites;
+
+    SELECT
+    fav.*
+    FROM favorites fav
+    WHERE fav.AccountId = `AccountId`;
+
+    SELECT * FROM favorites;
+    
+
 
