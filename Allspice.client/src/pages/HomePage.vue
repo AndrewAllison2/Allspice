@@ -21,6 +21,12 @@
           </div>
         </div>
       </div>
+
+      <div class="row">
+        <div class="col-3" v-for="recipe in recipes" :key="recipe.id">
+        Card Component Goes Here
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -29,7 +35,8 @@
 import Login from "../components/Login.vue";
 import Pop from "../utils/Pop.js";
 import {recipesService} from '../services/RecipesService.js'
-import { onMounted } from "vue";
+import { computed, onMounted } from "vue";
+import { AppState } from "../AppState.js";
 
 export default {
   setup() {
@@ -50,6 +57,8 @@ export default {
     })
     
     return {
+
+      recipes: computed(()=> AppState.recipes)
 
       
         };
