@@ -7,17 +7,36 @@ namespace Allspice.Repositories;
 
 public class IngredientsRepository
 {
-  private readonly IDbConnection _db;
+    private readonly IDbConnection _db;
 
     public IngredientsRepository(IDbConnection db)
     {
         _db = db;
     }
 
+    internal int CreateIngredient(Ingredient ingredientData)
+    {
+        string sql = @"
+        INSERT INTO ingredients(name, quantity, recipeId)
+        VALUES(@Name, @Quantity, @RecipeId);
+        SELECT LAST_INSERT_ID()
+        ;";
 
-// TODO WRITE SQL STRING AND METHOD IN REPO
+        int recipeId = _db.ExecuteScalar<int>(sql, ingredientData);
+        return recipeId;
+    }
+
+
+    // TODO WRITE SQL STRING AND METHOD IN REPO
     internal Ingredient GetIngredientById(int ingredientId)
     {
-        throw new NotImplementedException();
+        string sql = @"
+        SELECT *
+        FROM ingredients 
+        WHERE id = @ingredientId
+        ;";
+
+        Ingredient ingredient = _db.QueryFirstOrDefault<Ingredient>(sql, new { ingredientId });
+        return ingredient;
     }
 }
