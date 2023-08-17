@@ -23,7 +23,7 @@
       </div>
 
       <div class="row">
-        <div class="col-3" v-for="recipe in recipes" :key="recipe.id">
+        <div class="col-4" v-for="recipe in recipes" :key="recipe.id">
           <RecipeCard :recipeProp="recipe"/>
         </div>
       </div>
