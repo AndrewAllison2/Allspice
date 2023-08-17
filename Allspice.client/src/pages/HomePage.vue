@@ -1,41 +1,72 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <div class="home-card p-5 bg-white rounded elevation-3">
-      <img src="https://bcw.blob.core.windows.net/public/img/8600856373152463" alt="CodeWorks Logo"
-        class="rounded-circle">
-      <h1 class="my-5 bg-dark text-white p-3 rounded text-center">
-        Vue 3 Starter
-      </h1>
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="hero-img m-auto mt-4">
+        <div class="col-12 m-auto">
+
+          <div class="d-flex justify-content-end align-items-center">
+
+            <div class="me-3">
+              Search Bar
+            </div>
+
+            <Login/>
+          </div>
+
+          <div class="text-white text-center py-5">
+            <h1>All Spice</h1>
+            <h4>Cherish Your Family</h4>
+            <h4>And Their Cooking</h4>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import Login from "../components/Login.vue";
+import Pop from "../utils/Pop.js";
+import {recipesService} from '../services/RecipesService.js'
+import { onMounted } from "vue";
+
 export default {
   setup() {
-    return {}
-  }
+
+    async function getRecipes(){
+      try 
+      {
+        await recipesService.getRecipes()
+      }
+      catch (error)
+      {
+        return Pop.error(error.message)
+      }
+    }
+
+    onMounted(() => {
+      getRecipes()
+    })
+    
+    return {
+
+      
+        };
+    },
+    components: { Login }
 }
 </script>
 
 <style scoped lang="scss">
-.home {
-  display: grid;
-  height: 80vh;
-  place-content: center;
-  text-align: center;
-  user-select: none;
-
-  .home-card {
-    width: 50vw;
-
-    >img {
-      height: 200px;
-      max-width: 200px;
-      width: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
-  }
+.hero-img{
+  background-image: url(https://images.unsplash.com/photo-1466637574441-749b8f19452f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNvb2tpbmclMjBzdGF0aW9ufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 1%;
+  height: 40vh;
+  width: 97vw;
 }
 </style>
