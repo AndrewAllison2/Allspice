@@ -81,10 +81,11 @@ public class RecipesRepository
     img = @Img,
     category = @Category
     WHERE id = @Id
-    LIMIT 1
+    LIMIT 1;
+    SELECT * FROM recipes WHERE id = @Id
     ;";
 
-    Recipe updatedRecipes = _db.QueryFirstOrDefault<Recipe>(sql, ogRecipe);
-    return updatedRecipes;
+    Recipe recipe = _db.QueryFirstOrDefault<Recipe>(sql, ogRecipe);
+    return recipe;
     }
 }
