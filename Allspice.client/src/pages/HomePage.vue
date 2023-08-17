@@ -24,7 +24,7 @@
 
       <div class="row">
         <div class="col-3" v-for="recipe in recipes" :key="recipe.id">
-        Card Component Goes Here
+          <RecipeCard :recipeProp="recipe"/>
         </div>
       </div>
     </div>
@@ -37,6 +37,7 @@ import Pop from "../utils/Pop.js";
 import {recipesService} from '../services/RecipesService.js'
 import { computed, onMounted } from "vue";
 import { AppState } from "../AppState.js";
+import RecipeCard from "../components/RecipeCard.vue";
 
 export default {
   setup() {
@@ -63,7 +64,7 @@ export default {
       
         };
     },
-    components: { Login }
+    components: { Login, RecipeCard }
 }
 </script>
 
