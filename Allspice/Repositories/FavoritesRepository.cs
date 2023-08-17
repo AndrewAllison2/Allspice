@@ -28,4 +28,17 @@ public class FavoritesRepository
 
     return favoriteData;
     }
+
+    internal List<Favorite> GetAccountFavorites(string userId)
+    {
+    string sql = @"
+    SELECT
+    fav.*
+    FROM favorites fav
+    WHERE fav.accountId = @userId
+    ;";
+
+    List<Favorite> favorites = _db.Query<Favorite>(sql, new { userId }).ToList();
+    return favorites;
+    }
 }
