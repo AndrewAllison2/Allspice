@@ -34,3 +34,6 @@ CREATE TABLE ingredients(
 DROP TABLE recipes;
 
 
+DROP TABLE ingredients;
+
+

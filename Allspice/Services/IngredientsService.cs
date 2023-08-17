@@ -38,4 +38,16 @@ public class IngredientsService
     List<Ingredient> ingredients = _ingredientsRepository.GetIngredientByRecipeId(recipeId);
     return ingredients;
     }
+
+    internal Ingredient RemoveIngredient(int ingredientId, string userId)
+    {
+    // Ingredient ingredient = GetIngredientById(ingredientId);
+
+    // if (ingredient.CreatorId != userId)
+    // {
+    //   throw new Exception("You cannot remove ingredients you did not add.");
+    // } 
+    Ingredient removedIngredient = _ingredientsRepository.RemoveIngredient(ingredientId);
+    return removedIngredient;
+    }
 }
