@@ -12,6 +12,10 @@ class RecipesService {
     AppState.recipes = recipes
   }
 
+  setActiveRecipe(recipe) {
+    AppState.activeRecipe = recipe
+  }
+
 }
 
 export const recipesService = new RecipesService()

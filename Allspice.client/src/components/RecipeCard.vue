@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-12 mt-2 selectable">
+      <div class="col-12 mt-2 selectable" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="setActiveRecipe(this.recipeProp)" >
         <img class="recipe-img img-fluid" :src="recipeProp.imgUrl" alt="">
 
         <div class="category-elem">
@@ -30,6 +30,8 @@
 
 <script>
 import { Recipe } from "../models/Recipe.js";
+import { recipesService } from "../services/RecipesService.js";
+
 
 export default {
   props: {
@@ -37,11 +39,15 @@ export default {
   },
 
 
-  setup() {
+  setup(props) {
 
 
     
     return {
+
+      setActiveRecipe() {
+        recipesService.setActiveRecipe(props.recipeProp)
+      }
 
     }
   }
@@ -74,7 +80,7 @@ export default {
   position: relative;
   width: 12%;
   top: -17.5em;
-  left: 18em;
+  left: 24em;
 }
 
 .info-elem{
