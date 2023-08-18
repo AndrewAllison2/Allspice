@@ -16,7 +16,7 @@
 
         <div class="info-elem">
           <div class="text-center text-white">
-            <h5 class="m-0">{{ recipeProp.title }}</h5>
+            <h5 class="m-0 p-1">{{ recipeProp.title }}</h5>
             
           </div>
         </div>
@@ -88,7 +88,7 @@ export default {
   border-radius: 2px;
   position: relative;
   width: 75%;
-  height: 2em;
+  height: 2.2em;
   bottom: 5.7em;
   left: 3.4em;
 }
