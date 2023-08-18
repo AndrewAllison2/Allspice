@@ -1,11 +1,11 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-5">
+      <div class="col-4">
         <img class="img-fluid recipe-img" :src="activeRecipe?.imgUrl" :alt="activeRecipe?.title">
       </div>
 
-      <div class="col-7">
+      <div class="col-8">
         <div class="d-flex align-items-center justify-content-between mb-4">
           <h1>{{ activeRecipe?.title }}</h1>
           <p class="category-elem text-white">{{ activeRecipe?.category }}</p>
@@ -16,7 +16,7 @@
             <div class="text-center text-white card-background">
               <h4 class="mt-1">Recipe Steps</h4>
             </div>
-              <p>{{ activeRecipe?.instructions }}</p>
+              <p class="text-center">{{ activeRecipe?.instructions }}</p>
             <div>
 
             </div>
@@ -27,6 +27,7 @@
             <div class="text-center text-white card-background">
               <h4 class="mt-1">Ingredients</h4>
             </div>
+            <p>{{  }}</p>
           </div>
         </div>
       </div>
