@@ -9,7 +9,7 @@
 
       <!-- SECTION RECIPE DETAILS/FORMS -->
       <div class="col-8 p-3">
-        <div class="d-flex justify-content-end mb-3">
+        <div class="d-flex justify-content-end">
           <div class="favorite-elem text-center">
           <i class="mdi mdi-heart-outline fs-2 selectable" title="Add to favorites" @click="CreateFavorite()"></i>
         </div>
@@ -45,7 +45,7 @@
             <div class="text-center text-white card-background">
               <h4 class="mt-1">Ingredients</h4>
             </div>
-            <div class="card-secondary-background">
+            <div class="card-secondary-background d-flex flex-column justify-content-between">
               <div class="text-center">
                 <ul v-for="i in ingredients" :key="i.id">
                   <li>
@@ -53,12 +53,15 @@
                   </li>
                 </ul>
               </div>
+                <div class="ps-2">
+                  <IngredientsForm/>
+                </div>
             </div>
           </div>
 
         </div>
 
-        <p class="text-end mt-2 pe-2">Published By: {{ activeRecipe?.creator?.name }}</p>
+        <p class="text-end mt-2 mb-0 pe-2">Published By: {{ activeRecipe?.creator?.name }}</p>
 
       </div>
     </div>
@@ -72,6 +75,7 @@ import { computed} from "vue";
 import { AppState } from "../AppState.js";
 import { logger } from "../utils/Logger.js";
 import RecipeStepsForm from "./RecipeStepsForm.vue";
+import IngredientsForm from "./IngredientsForm.vue";
 
 
 
@@ -86,7 +90,7 @@ export default {
             }
         };
     },
-    components: { RecipeStepsForm }
+    components: { RecipeStepsForm, IngredientsForm }
 }
 </script>
 
