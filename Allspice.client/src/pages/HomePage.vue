@@ -35,10 +35,10 @@
 import Login from "../components/Login.vue";
 import Pop from "../utils/Pop.js";
 import {recipesService} from '../services/RecipesService.js'
-import { computed, onMounted, watchEffect } from "vue";
+import { computed, onMounted} from "vue";
 import { AppState } from "../AppState.js";
 import RecipeCard from "../components/RecipeCard.vue";
-import { ingredientsService } from "../services/IngredientsService.js";
+
 
 export default {
   setup() {

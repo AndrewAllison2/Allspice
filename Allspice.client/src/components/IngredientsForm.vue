@@ -12,7 +12,7 @@
         <label for="ingredientName">Name of Ingredient</label>
       </div>
 
-      <button>Add Ingredient</button>
+      <button class="btn back-button" data-bs-target="#exampleModal" data-bs-toggle="modal">Add Ingredient</button>
 
   </form>
 
@@ -24,6 +24,7 @@ import { ref } from "vue";
 import Pop from "../utils/Pop.js";
 import { AppState } from "../AppState.js";
 import { ingredientsService } from "../services/IngredientsService.js";
+
 
 export default {
   setup() {
@@ -40,6 +41,7 @@ export default {
           const recipeId = AppState.activeRecipe.id
           formData.recipeId = recipeId
           await ingredientsService.addIngredient(formData)
+          
         }
         catch (error)
         {

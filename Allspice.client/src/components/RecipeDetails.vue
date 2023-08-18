@@ -71,20 +71,27 @@
 
 
 <script>
-import { computed} from "vue";
+import { computed, watch, watchEffect} from "vue";
 import { AppState } from "../AppState.js";
 import { logger } from "../utils/Logger.js";
 import RecipeStepsForm from "./RecipeStepsForm.vue";
-import IngredientsForm from "./IngredientsForm.vue";
-
+import { ingredientsService } from "../services/IngredientsService.js";
 
 
 
 export default {
-    setup() {
+  setup() {
+
+    watchEffect(() => {
+      ingredientsService.getIngredientsByRecipeId()
+    })
+    
         return {
-            activeRecipe: computed(() => AppState.activeRecipe),
-            ingredients: computed(() => AppState.ingredients),
+          activeRecipe: computed(() => AppState.activeRecipe),
+          // TODO COMPUTED CONDITIONALS 
+          ingredients: computed(() => AppState.ingredients),
+
+          
             async CreateFavorite() {
                 logger.log('Gonna make a fave!');
             }

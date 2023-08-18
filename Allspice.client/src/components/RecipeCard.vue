@@ -29,7 +29,6 @@
 
 
 <script>
-
 import { Recipe } from "../models/Recipe.js";
 import { ingredientsService } from "../services/IngredientsService.js";
 import { recipesService } from "../services/RecipesService.js";
@@ -42,9 +41,7 @@ export default {
     recipeProp: {type: Recipe, required: true}
   },
 
-
   setup(props) {
-
 
     
     return {
