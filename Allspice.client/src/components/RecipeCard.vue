@@ -5,9 +5,9 @@
         <img class="recipe-img img-fluid" :src="recipeProp.imgUrl" alt="">
 
         <div class="category-elem">
-          <h5 class="text-center text-white">
+          <p class="text-center text-white">
             {{ recipeProp.category }}
-          </h5>
+          </p>
         </div>
 
         <div class="favorite-elem text-center text-danger">
@@ -15,8 +15,8 @@
         </div>
 
         <div class="info-elem">
-          <div class="text-center">
-            <h5>{{ recipeProp.title }}</h5>
+          <div class="text-center text-white">
+            <h5 class="m-0">{{ recipeProp.title }}</h5>
             
           </div>
         </div>
@@ -73,8 +73,18 @@ export default {
   border-radius: 2px;
   position: relative;
   width: 12%;
-  top: -17em;
-  left: 24em;
+  top: -17.5em;
+  left: 18em;
+}
+
+.info-elem{
+  background-color: gray;
+  border-radius: 2px;
+  position: relative;
+  width: 75%;
+  height: 2em;
+  bottom: 7.7em;
+  left: 2.7em;
 }
 
 </style>
