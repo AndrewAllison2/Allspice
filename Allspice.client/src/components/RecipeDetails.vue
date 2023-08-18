@@ -1,6 +1,8 @@
 <template>
   <div class="container-fluid">
     <div class="row">
+
+      <!-- SECTION RECIPE IMG/LIKE BTN -->
       <div class="col-4 p-0">
         <img class="img-fluid recipe-img" :src="activeRecipe?.imgUrl" :alt="activeRecipe?.title">
         <div class="favorite-elem text-center">
@@ -8,16 +10,19 @@
         </div>
       </div>
 
+      <!-- SECTION RECIPE DETAILS/FORMS -->
       <div class="col-8 p-3">
         <div class="d-flex justify-content-end mb-3">
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
+        <!-- SECTION RECIPE INFO -->
         <div class="d-flex align-items-center justify-content-between mb-4">
           <h1>{{ activeRecipe?.title }}</h1>
           <p class="category-elem text-white">{{ activeRecipe?.category }}</p>
         </div>
 
+        <!-- SECTION RECIPE STEPS -->
         <div class="row justify-content-around">
           <div class="col-5 card p-0">
             <div class="text-center text-white card-background">
@@ -28,7 +33,7 @@
             </div>
           </div>
 
-
+          <!-- SECTION INGREDIENTS -->
           <div class="col-5 card p-0">
             <div class="text-center text-white card-background">
               <h4 class="mt-1">Ingredients</h4>
@@ -40,10 +45,12 @@
                 </li>
               </ul>
             </div>
-            
           </div>
+
         </div>
+
         <p class="text-end">Published By: {{ activeRecipe?.creator.name }}</p>
+
       </div>
     </div>
   </div>
