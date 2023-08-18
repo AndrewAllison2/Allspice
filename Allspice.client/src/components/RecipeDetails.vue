@@ -17,7 +17,7 @@
               <h4 class="mt-1">Recipe Steps</h4>
             </div>
             <div class="text-center card-secondary-background">
-              <p class="mb-0 p-1">{{ activeRecipe?.instructions }}</p>
+              <p class="mb-0 p-2">{{ activeRecipe?.instructions }}</p>
             </div>
           </div>
 
@@ -27,7 +27,11 @@
               <h4 class="mt-1">Ingredients</h4>
             </div>
             <div class="text-center card-secondary-background">
-              <p class="mb-0 p-1">Ingredients</p>
+              <ul v-for="i in ingredients" :key="i.id">
+                <li>
+                  <p class="p-2 mb-1">{{ i?.quantity }} {{ i?.name }}</p>
+                </li>
+              </ul>
             </div>
             
           </div>
@@ -41,10 +45,9 @@
 
 
 <script>
-import { computed, watchEffect } from "vue";
+import { computed} from "vue";
 import { AppState } from "../AppState.js";
-import Pop from "../utils/Pop.js";
-import {ingredientsService} from "../services/IngredientsService.js"
+
 
 
 
@@ -58,7 +61,8 @@ export default {
     
     
     return {
-      activeRecipe: computed(()=> AppState.activeRecipe)
+      activeRecipe: computed(() => AppState.activeRecipe),
+      ingredients: computed(()=> AppState.ingredients)
     }
   }
 }
