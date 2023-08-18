@@ -125,7 +125,7 @@ export default {
   border-radius: 2px;
   position: relative;
   width: 12%;
-  top: -1.1em;
+  top: -1.0em;
   left: -45.5em;
 }
 

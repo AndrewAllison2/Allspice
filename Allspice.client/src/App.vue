@@ -30,12 +30,12 @@
         Hide this modal and show the first with the button below.
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back to first</button>
+        <button class="btn btn-primary" data-bs-target="#exampleModal" data-bs-toggle="modal">Back to first</button>
       </div>
     </div>
   </div>
 </div>
-<a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Open first modal</a>
+<!-- <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalToggle" role="button">Open first modal</button> -->
 
 
 </template>
