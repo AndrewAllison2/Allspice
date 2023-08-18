@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-12 my-2 selectable">
+      <div class="col-12 mt-2 selectable">
         <img class="recipe-img img-fluid" :src="recipeProp.imgUrl" alt="">
 
         <div class="category-elem">
@@ -83,8 +83,8 @@ export default {
   position: relative;
   width: 75%;
   height: 2em;
-  bottom: 7.7em;
-  left: 2.7em;
+  bottom: 5.7em;
+  left: 3.4em;
 }
 
 </style>
