@@ -53,6 +53,10 @@ export default {
       }
     }
 
+    async function getIngredientsByRecipeId() {
+      
+    }
+
     onMounted(() => {
       getRecipes()
     })
