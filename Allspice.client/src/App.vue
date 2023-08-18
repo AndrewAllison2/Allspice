@@ -3,38 +3,28 @@
   <main>
     <router-view />
   </main>
-   
+
   <!-- SECTION RECIPE MODAL -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      
-      <div class="modal-body p-0">
-        <RecipeDetails/>
-      </div>
-        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-    </div>
-  </div>
-</div>
+  <MainModalComponent/>
 
 <!-- SECTION INGREDIENT FORM MODAL -->
-
-<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+<SecondaryModal/>
+<!-- <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Modal 2</h1>
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Add Ingredient</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Hide this modal and show the first with the button below.
+        <IngredientsForm/>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary" data-bs-target="#exampleModal" data-bs-toggle="modal">Back to first</button>
+        <button class="btn back-button" data-bs-target="#exampleModal" data-bs-toggle="modal">Back to Recipe</button>
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <!-- <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalToggle" role="button">Open first modal</button> -->
 
 
@@ -43,7 +33,10 @@
 <script>
 import { computed } from 'vue'
 import { AppState } from './AppState'
-import RecipeDetails from "./components/RecipeDetails.vue";
+
+
+import MainModalComponent from "./components/MainModalComponent.vue";
+import SecondaryModal from "./components/SecondaryModal.vue";
 
 
 export default {
@@ -52,7 +45,7 @@ export default {
             appState: computed(() => AppState)
         };
     },
-    components: { RecipeDetails }
+    components: { MainModalComponent, SecondaryModal }
 }
 </script>
 <style lang="scss">

@@ -3,7 +3,6 @@
   <div class="form-floating my-3 d-flex align-items-center">
     <textarea class="form-control form-control-lg input-font" cols="38" max-length="825" id="floatingIngredientarea" v-model="editable.name"></textarea>
     <label for="floatingIngredientarea" placeholder="Add an Ingredient">Add Ingredient</label>
-    <i class="mdi mdi-plus fs-3 selectable" title="Add an Ingredient" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"></i>
   </div>
 
 </template>

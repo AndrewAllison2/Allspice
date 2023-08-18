@@ -42,10 +42,10 @@
 
           <!-- SECTION INGREDIENTS -->
           <div class="col-5 card elevation-4 p-0">
-            <div class="text-center text-white card-background">
-              <h4 class="mt-1">Ingredients</h4>
+            <div class="text-center text-white card-background ">
+              <h4 class="mt-1 text-center">Ingredients</h4>
             </div>
-            <div class="card-secondary-background d-flex flex-column justify-content-between">
+            <div class="card-secondary-background">
               <div class="text-center">
                 <ul v-for="i in ingredients" :key="i.id">
                   <li>
@@ -53,9 +53,9 @@
                   </li>
                 </ul>
               </div>
-                <div class="ps-2">
-                  <IngredientsForm/>
-                </div>
+            </div>
+            <div class="card-background text-center">
+              <i class="mdi mdi-plus fs-4 selectable text-white" title="Add an Ingredient" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"> Add Ingredient</i>
             </div>
           </div>
 
@@ -90,7 +90,7 @@ export default {
             }
         };
     },
-    components: { RecipeStepsForm, IngredientsForm }
+    components: { RecipeStepsForm}
 }
 </script>
 
