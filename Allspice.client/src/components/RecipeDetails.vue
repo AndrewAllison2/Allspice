@@ -16,9 +16,8 @@
             <div class="text-center text-white card-background">
               <h4 class="mt-1">Recipe Steps</h4>
             </div>
-              <p class="text-center">{{ activeRecipe?.instructions }}</p>
-            <div>
-
+            <div class="text-center card-secondary-background">
+              <p class="mb-0 p-1">{{ activeRecipe?.instructions }}</p>
             </div>
           </div>
 
@@ -27,9 +26,13 @@
             <div class="text-center text-white card-background">
               <h4 class="mt-1">Ingredients</h4>
             </div>
-            <p>{{  }}</p>
+            <div class="text-center card-secondary-background">
+              <p class="mb-0 p-1">Ingredients</p>
+            </div>
+            
           </div>
         </div>
+        <p class="text-end">Published By: {{ activeRecipe?.creator.name }}</p>
       </div>
     </div>
   </div>
@@ -69,7 +72,11 @@ export default {
 
 .card-background{
   background-color: #527360;
-;
+}
+
+.card-secondary-background{
+  background-color: #F0F4F2;
+
 }
 
 </style>
