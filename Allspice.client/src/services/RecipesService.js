@@ -16,6 +16,13 @@ class RecipesService {
     AppState.activeRecipe = recipe
   }
 
+  async editRecipeInstructions(formData, recipeId) {
+    const res = await api.put(`api/recipes/${recipeId}`, formData)
+    logger.log('EDITING RECIPE STEPS', res.data)
+    let updatedRecipe = new Recipe(res.data)
+    AppState.activeRecipe = updatedRecipe
+  }
+
 }
 
 export const recipesService = new RecipesService()

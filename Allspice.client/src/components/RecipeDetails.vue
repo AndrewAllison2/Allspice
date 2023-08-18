@@ -24,7 +24,7 @@
 
         <!-- SECTION RECIPE STEPS -->
         <div class="row justify-content-around">
-          <div class="col-5 card p-0">
+          <div class="col-6 card p-0">
             <div class="text-center text-white card-background">
               <h4 class="mt-1">Recipe Steps</h4>
             </div>
@@ -53,7 +53,7 @@
 
         </div>
 
-        <p class="text-end">Published By: {{ activeRecipe?.creator.name }}</p>
+        <p class="text-end">Published By: {{ activeRecipe?.creator?.name }}</p>
 
       </div>
     </div>
