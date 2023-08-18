@@ -41,15 +41,22 @@
 
 
 <script>
-import { computed } from "vue";
+import { computed, watchEffect } from "vue";
 import { AppState } from "../AppState.js";
+import Pop from "../utils/Pop.js";
+import {ingredientsService} from "../services/IngredientsService.js"
 
 
 
 export default {
+
+  
   
 
-  setup(){
+  setup() {
+
+    
+    
     return {
       activeRecipe: computed(()=> AppState.activeRecipe)
     }

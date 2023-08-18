@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-12 mt-2 selectable" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="setActiveRecipe(this.recipeProp)" >
+      <div class="col-12 mt-2 selectable" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="setActiveRecipe(this.recipeProp), getIngredientsByRecipeId(this.recipeProp)" >
         <img class="recipe-img img-fluid" :src="recipeProp.imgUrl" alt="">
 
         <div class="category-elem">
@@ -29,8 +29,12 @@
 
 
 <script>
+
 import { Recipe } from "../models/Recipe.js";
+import { ingredientsService } from "../services/IngredientsService.js";
 import { recipesService } from "../services/RecipesService.js";
+import { logger } from "../utils/Logger.js";
+import Pop from "../utils/Pop.js";
 
 
 export default {
@@ -47,7 +51,20 @@ export default {
 
       setActiveRecipe() {
         recipesService.setActiveRecipe(props.recipeProp)
+      },
+
+      async getIngredientsByRecipeId() {
+      try 
+      {
+        const recipeId = props.recipeProp.id
+        logger.log('RECIPEID', recipeId)
+        await ingredientsService.getIngredientsByRecipeId(recipeId)
       }
+      catch (error)
+      {
+        return Pop.error(error.message)
+      }
+    }
 
     }
   }
