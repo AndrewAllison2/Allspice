@@ -1,11 +1,15 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-4">
+      <div class="col-4 p-0">
         <img class="img-fluid recipe-img" :src="activeRecipe?.imgUrl" :alt="activeRecipe?.title">
       </div>
 
-      <div class="col-8">
+      <div class="col-8 p-3">
+        <div class="d-flex justify-content-end mb-3">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
         <div class="d-flex align-items-center justify-content-between mb-4">
           <h1>{{ activeRecipe?.title }}</h1>
           <p class="category-elem text-white">{{ activeRecipe?.category }}</p>
