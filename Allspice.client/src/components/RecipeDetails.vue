@@ -5,15 +5,16 @@
       <!-- SECTION RECIPE IMG/LIKE BTN -->
       <div class="col-4 p-0">
         <img class="img-fluid recipe-img" :src="activeRecipe?.imgUrl" :alt="activeRecipe?.title">
-        <div class="favorite-elem text-center">
-          <i class="mdi mdi-heart-outline fs-2 selectable" title="Add to favorites" @click="CreateFavorite()"></i>
-        </div>
       </div>
 
       <!-- SECTION RECIPE DETAILS/FORMS -->
       <div class="col-8 p-3">
         <div class="d-flex justify-content-end mb-3">
+          <div class="favorite-elem text-center">
+          <i class="mdi mdi-heart-outline fs-2 selectable" title="Add to favorites" @click="CreateFavorite()"></i>
+        </div>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          
         </div>
 
         <!-- SECTION RECIPE INFO -->
@@ -24,11 +25,11 @@
 
         <!-- SECTION RECIPE STEPS -->
         <div class="row justify-content-around">
-          <div class="col-6 card p-0">
+          <div class="col-6 card elevation-4 p-0">
             <div class="text-center text-white card-background">
               <h4 class="mt-1">Recipe Steps</h4>
             </div>
-            <div class="card-secondary-background">
+            <div class="card-secondary-background d-flex flex-column justify-content-between">
               <div class="text-center">
                 <p class="mb-0 p-2">{{ activeRecipe?.instructions }}</p>
               </div>
@@ -40,22 +41,24 @@
           </div>
 
           <!-- SECTION INGREDIENTS -->
-          <div class="col-5 card p-0">
+          <div class="col-5 card elevation-4 p-0">
             <div class="text-center text-white card-background">
               <h4 class="mt-1">Ingredients</h4>
             </div>
-            <div class="text-center card-secondary-background">
-              <ul v-for="i in ingredients" :key="i.id">
-                <li>
-                  <p class="p-2 mb-1">{{ i?.quantity }} {{ i?.name }}</p>
-                </li>
-              </ul>
+            <div class="card-secondary-background">
+              <div class="text-center">
+                <ul v-for="i in ingredients" :key="i.id">
+                  <li>
+                    <p class="p-2 mb-1">{{ i?.quantity }} {{ i?.name }}</p>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
 
         </div>
 
-        <p class="text-end">Published By: {{ activeRecipe?.creator?.name }}</p>
+        <p class="text-end mt-2 pe-2">Published By: {{ activeRecipe?.creator?.name }}</p>
 
       </div>
     </div>
@@ -95,7 +98,7 @@ export default {
   object-position: center;
 
   width: 100%;
-  height: 35.5em;
+  height: 41.3em;
 }
 
 .category-elem{
@@ -110,6 +113,7 @@ export default {
 
 .card-secondary-background{
   background-color: #F0F4F2;
+  height: 100%;
 }
 
 .favorite-elem{
@@ -117,8 +121,12 @@ export default {
   border-radius: 2px;
   position: relative;
   width: 12%;
-  top: -35.55em;
-  left: 20em;
+  top: -1.1em;
+  left: -45.5em;
+}
+
+.card{
+  height: 27.2em;
 }
 
 </style>

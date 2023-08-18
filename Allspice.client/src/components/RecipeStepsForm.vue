@@ -1,7 +1,7 @@
 <template>
 
   <div class="form-floating my-3 d-flex align-items-center">
-    <textarea class="form-control form-control-lg input-font" cols="38" id="floatingTextarea" v-model="editable.instructions"></textarea>
+    <textarea class="form-control form-control-lg input-font" cols="38" max-length="825" id="floatingTextarea" v-model="editable.instructions"></textarea>
     <label for="floatingTextarea" placeholder="Add a step">Add Step</label>
     <i class="mdi mdi-plus fs-3 selectable" title="Add Step" @click="editRecipeInstructions()"></i>
   </div>
