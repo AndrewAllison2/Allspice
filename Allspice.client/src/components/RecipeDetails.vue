@@ -3,6 +3,9 @@
     <div class="row">
       <div class="col-4 p-0">
         <img class="img-fluid recipe-img" :src="activeRecipe?.imgUrl" :alt="activeRecipe?.title">
+        <div class="favorite-elem text-center">
+          <i class="mdi mdi-heart-outline fs-2 selectable" title="Add to favorites" @click="CreateFavorite()"></i>
+        </div>
       </div>
 
       <div class="col-8 p-3">
@@ -51,6 +54,7 @@
 <script>
 import { computed} from "vue";
 import { AppState } from "../AppState.js";
+import { logger } from "../utils/Logger.js";
 
 
 
@@ -66,7 +70,11 @@ export default {
     
     return {
       activeRecipe: computed(() => AppState.activeRecipe),
-      ingredients: computed(()=> AppState.ingredients)
+      ingredients: computed(() => AppState.ingredients),
+
+      async CreateFavorite() {
+        logger.log('Gonna make a fave!')
+      }
     }
   }
 }
@@ -77,6 +85,10 @@ export default {
 
 .recipe-img{
   object-fit: cover;
+  object-position: center;
+
+  width: 100%;
+  height: 35.5em;
 }
 
 .category-elem{
@@ -91,7 +103,15 @@ export default {
 
 .card-secondary-background{
   background-color: #F0F4F2;
+}
 
+.favorite-elem{
+  background-color: gray;
+  border-radius: 2px;
+  position: relative;
+  width: 12%;
+  top: -35.55em;
+  left: 20em;
 }
 
 </style>
