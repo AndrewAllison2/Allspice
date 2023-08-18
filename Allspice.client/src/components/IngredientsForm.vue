@@ -1,9 +1,20 @@
 <template>
 
-  <div class="form-floating my-3 d-flex align-items-center">
-    <textarea class="form-control form-control-lg input-font" cols="38" max-length="825" id="floatingIngredientarea" v-model="editable.name"></textarea>
-    <label for="floatingIngredientarea" placeholder="Add an Ingredient">Add Ingredient</label>
-  </div>
+  <form action="" @submit.prevent="addIngredient()">
+
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="ingredientQuantity" placeholder="Add an ingredient!" v-model="editable.quantity">
+        <label for="ingredientQuantity">Quantity of Ingredient</label>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="ingredientName" placeholder="Add an ingredient!" v-model="editable.name">
+        <label for="ingredientName">Name of Ingredient</label>
+      </div>
+
+      <button>Add Ingredient</button>
+
+  </form>
 
 </template>
 
@@ -43,4 +54,8 @@ export default {
 
 <style lang="scss" scoped>
 
+.back-button{
+  background-color: #527360;
+  color: white;
+}
 </style>
