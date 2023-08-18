@@ -31,6 +31,10 @@
             <div class="text-center card-secondary-background">
               <p class="mb-0 p-2">{{ activeRecipe?.instructions }}</p>
             </div>
+            <div class="m-auto">
+              <!-- recipe steps form component here -->
+              <RecipeStepsForm/>
+            </div>
           </div>
 
           <!-- SECTION INGREDIENTS -->
@@ -62,28 +66,22 @@
 import { computed} from "vue";
 import { AppState } from "../AppState.js";
 import { logger } from "../utils/Logger.js";
+import RecipeStepsForm from "./RecipeStepsForm.vue";
 
 
 
 
 export default {
-
-  
-  
-
-  setup() {
-
-    
-    
-    return {
-      activeRecipe: computed(() => AppState.activeRecipe),
-      ingredients: computed(() => AppState.ingredients),
-
-      async CreateFavorite() {
-        logger.log('Gonna make a fave!')
-      }
-    }
-  }
+    setup() {
+        return {
+            activeRecipe: computed(() => AppState.activeRecipe),
+            ingredients: computed(() => AppState.ingredients),
+            async CreateFavorite() {
+                logger.log('Gonna make a fave!');
+            }
+        };
+    },
+    components: { RecipeStepsForm }
 }
 </script>
 
