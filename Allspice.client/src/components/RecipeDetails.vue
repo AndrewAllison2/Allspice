@@ -28,12 +28,14 @@
             <div class="text-center text-white card-background">
               <h4 class="mt-1">Recipe Steps</h4>
             </div>
-            <div class="text-center card-secondary-background">
-              <p class="mb-0 p-2">{{ activeRecipe?.instructions }}</p>
-            </div>
-            <div class="m-auto">
-              <!-- recipe steps form component here -->
-              <RecipeStepsForm/>
+            <div class="card-secondary-background">
+              <div class="text-center">
+                <p class="mb-0 p-2">{{ activeRecipe?.instructions }}</p>
+              </div>
+              <div class="ps-2">
+                <!-- recipe steps form component here -->
+                <RecipeStepsForm/>
+              </div>
             </div>
           </div>
 
