@@ -49,13 +49,13 @@
               <div class="text-center">
                 <ul v-for="i in ingredients" :key="i.id">
                   <li>
-                    <p class="p-2 mb-1">{{ i?.quantity }} {{ i?.name }}</p>
+                    <p class="p-2 mb-1 selectable" @click="setActiveIngredient(i)" data-bs-toggle="modal" data-bs-target="#IngredientsOptions">{{ i?.quantity }} {{ i?.name }}</p>
                   </li>
                 </ul>
               </div>
             </div>
             <div class="card-background text-center">
-              <i class="mdi mdi-plus fs-4 selectable text-white" title="Add an Ingredient" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"> Add Ingredient</i>
+              <i class="mdi mdi-plus fs-4 selectable text-white" title="Add an Ingredient" data-bs-target="#AddIngredientModal" data-bs-toggle="modal"> Add Ingredient</i>
             </div>
           </div>
 
@@ -75,6 +75,7 @@ import { computed} from "vue";
 import { AppState } from "../AppState.js";
 import { logger } from "../utils/Logger.js";
 import RecipeStepsForm from "./RecipeStepsForm.vue";
+import { ingredientsService } from "../services/IngredientsService.js";
 
 
 
@@ -90,7 +91,11 @@ export default {
           
             async CreateFavorite() {
                 logger.log('Gonna make a fave!');
-            }
+          },
+
+          setActiveIngredient(ingredient){
+            ingredientsService.setActiveIngredient(ingredient)
+          }
         };
     },
     components: { RecipeStepsForm}

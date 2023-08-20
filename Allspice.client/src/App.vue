@@ -5,38 +5,36 @@
   </main>
 
   <!-- SECTION RECIPE MODAL -->
+
   <MainModalComponent/>
 
 <!-- SECTION INGREDIENT FORM MODAL -->
-<SecondaryModal/>
-<!-- <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Add Ingredient</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <IngredientsForm/>
-      </div>
-      <div class="modal-footer">
-        <button class="btn back-button" data-bs-target="#exampleModal" data-bs-toggle="modal">Back to Recipe</button>
-      </div>
-    </div>
-  </div>
-</div> -->
-<!-- <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalToggle" role="button">Open first modal</button> -->
 
+<SecondaryModal id="AddIngredientModal">
+<template #header>Add Ingredient</template>
+<template #body>
+  <IngredientsForm />
+</template>
+</SecondaryModal>
+
+<IngredientsOptionsModal id="IngredientsOptions">
+  <template #header>Add Ingredient</template>
+<template #body>
+  
+</template>
+</IngredientsOptionsModal>
 
 </template>
-
 <script>
+
 import { computed } from 'vue'
 import { AppState } from './AppState'
 
 
 import MainModalComponent from "./components/MainModalComponent.vue";
 import SecondaryModal from "./components/SecondaryModal.vue";
+import IngredientsForm from "./components/IngredientsForm.vue";
+import IngredientsOptionsModal from "./components/IngredientOptionsModal.vue"
 
 
 export default {
@@ -45,7 +43,7 @@ export default {
             appState: computed(() => AppState)
         };
     },
-    components: { MainModalComponent, SecondaryModal }
+    components: { MainModalComponent, SecondaryModal, IngredientsForm, IngredientsOptionsModal}
 }
 </script>
 <style lang="scss">

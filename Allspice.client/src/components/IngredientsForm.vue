@@ -4,12 +4,12 @@
   <form action="" @submit.prevent="addIngredient()">
 
       <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="ingredientQuantity" placeholder="Add an ingredient!" v-model="editable.quantity">
+        <input type="text" class="form-control" :required="editable.quantity" id="ingredientQuantity" placeholder="Add an ingredient!" v-model="editable.quantity">
         <label for="ingredientQuantity">Quantity of Ingredient</label>
       </div>
 
       <div class="form-floating mb-3">
-        <input type="text" class="form-control is-valid" id="ingredientName" required placeholder="Add an ingredient!" v-model="editable.name">
+        <input type="text" class="form-control" :required="editable.name" placeholder="Add an ingredient!" v-model="editable.name">
         <label for="ingredientName">Name of Ingredient</label>
       </div>
       

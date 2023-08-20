@@ -19,6 +19,10 @@ class IngredientsService {
     AppState.ingredients.push(ingredient)
   }
 
+  setActiveIngredient(ingredient) {
+    AppState.activeIngredient = ingredient
+  }
+
 }
 
 
