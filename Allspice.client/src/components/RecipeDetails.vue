@@ -127,7 +127,7 @@ export default {
   background-color: gray;
   border-radius: 2px;
   position: relative;
-  width: 12%;
+  width: 8%;
   top: -1.0em;
   left: -45.5em;
 }

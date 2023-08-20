@@ -1,7 +1,7 @@
 <template>
   <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
+    <div class="modal-content modal-elem">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Add Ingredient</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -9,9 +9,8 @@
       <div class="modal-body">
         <IngredientsForm/>
       </div>
-      <div class="modal-footer">
-        <button class="btn back-button" data-bs-target="#exampleModal" data-bs-toggle="modal">Back to Recipe</button>
-      </div>
+      <button class="btn back-button" data-bs-target="#exampleModal" data-bs-toggle="modal">Back to Recipe</button>
+      
     </div>
   </div>
 </div>
@@ -34,5 +33,11 @@ export default {
 .back-button{
   background-color: #527360;
   color: white;
+  height: 4em;
+}
+
+.modal-elem{
+  // border: 2px solid black;
+  box-shadow: 2px 2px white;
 }
 </style>
