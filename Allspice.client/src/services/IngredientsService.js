@@ -15,8 +15,8 @@ class IngredientsService {
   async addIngredient(formData) {
     const res = await api.post(`api/ingredients`, formData)
     logger.log('[CREATING INGREDIENT]', res.data)
-    const ingredients = res.data.map(i => new Ingredient(i))
-    AppState.ingredients = ingredients
+    const ingredient = new Ingredient(res.data)
+    AppState.ingredients.push(ingredient)
   }
 
 }

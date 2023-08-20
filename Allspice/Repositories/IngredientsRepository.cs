@@ -17,8 +17,8 @@ public class IngredientsRepository
     internal int CreateIngredient(Ingredient ingredientData)
     {
         string sql = @"
-        INSERT INTO ingredients(name, quantity, recipeId)
-        VALUES(@Name, @Quantity, @RecipeId);
+        INSERT INTO ingredients(name, quantity, recipeId, creatorId)
+        VALUES(@Name, @Quantity, @RecipeId, @CreatorId);
         SELECT LAST_INSERT_ID()
         ;";
 

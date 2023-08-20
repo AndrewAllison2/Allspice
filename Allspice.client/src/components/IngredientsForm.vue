@@ -38,10 +38,12 @@ export default {
         try 
         {
           const formData = editable.value
+          const creatorId = AppState.account.id
           const recipeId = AppState.activeRecipe.id
           formData.recipeId = recipeId
+          formData.creatorId = creatorId
           await ingredientsService.addIngredient(formData)
-          
+          editable.value = {}
         }
         catch (error)
         {

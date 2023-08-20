@@ -71,20 +71,16 @@
 
 
 <script>
-import { computed, watch, watchEffect} from "vue";
+import { computed} from "vue";
 import { AppState } from "../AppState.js";
 import { logger } from "../utils/Logger.js";
 import RecipeStepsForm from "./RecipeStepsForm.vue";
-import { ingredientsService } from "../services/IngredientsService.js";
+
 
 
 
 export default {
   setup() {
-
-    watchEffect(() => {
-      ingredientsService.getIngredientsByRecipeId()
-    })
     
         return {
           activeRecipe: computed(() => AppState.activeRecipe),
