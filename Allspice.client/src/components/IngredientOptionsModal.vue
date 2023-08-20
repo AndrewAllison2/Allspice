@@ -1,10 +1,10 @@
 <template>
 
-  <div class="modal fade" id="IngredientsOptions" tabindex="-1" aria-labelledby="ingredientsOptions" aria-hidden="true">
+  <div class="modal fade " id="IngredientsOptions" tabindex="-1" aria-labelledby="ingredientsOptions" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title text-center" id="ingredientsOptions">{{activeIngredient.quantity}} of {{ activeIngredient?.name }}</h3>
+    <div class="modal-content modal-elem">
+      <div class="modal-header back-button">
+        <h3 class="modal-title text-center" id="ingredientsOptions">{{activeIngredient?.quantity}} {{ activeIngredient?.name }}</h3>
       </div>
       <div class="modal-body">
         <div class="d-flex flex-column justify-content-between align-items-center p-1">
@@ -14,7 +14,7 @@
           </div>
 
           <div class="mb-3">
-            <button class="btn btn-danger">Delete</button>
+            <button class="btn btn-danger" @click="removeIngredient()">Delete</button>
           </div>
 
           <div class="mb3">
@@ -36,11 +36,34 @@
 <script>
 import { computed } from "vue";
 import { AppState } from "../AppState.js";
+import Pop from "../utils/Pop.js";
+import { ingredientsService } from "../services/IngredientsService.js";
+import { Modal } from "bootstrap";
 
 export default {
   setup(){
     return {
-      activeIngredient: computed(()=> AppState.activeIngredient)
+      activeIngredient: computed(() => AppState.activeIngredient),
+
+      async removeIngredient() {
+        try 
+        {
+          if (await Pop.confirm("Are you sure you want to remove this ingredient?")) {
+            const ingredientId = AppState.activeIngredient.id
+            await ingredientsService.removeIngredient(ingredientId)
+            this.openRecipeModal()
+          } return
+        }
+        catch (error)
+        {
+          return Pop.error(error.message)
+        }
+      },
+
+      openRecipeModal() {
+        Modal.getOrCreateInstance('#IngredientsOptions').hide()
+        Modal.getOrCreateInstance('#exampleModal').show()
+      }
     }
   }
 }
@@ -51,5 +74,9 @@ export default {
 .back-button{
   background-color: #527360;
   color: white;
+}
+
+.modal-elem{
+  box-shadow: 2px 2px #ffffff;
 }
 </style>
