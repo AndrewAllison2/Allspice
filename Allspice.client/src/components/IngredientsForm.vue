@@ -9,11 +9,11 @@
       </div>
 
       <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="ingredientName" required placeholder="Add an ingredient!" v-model="editable.name">
+        <input type="text" class="form-control is-valid" id="ingredientName" required placeholder="Add an ingredient!" v-model="editable.name">
         <label for="ingredientName">Name of Ingredient</label>
       </div>
       
-        <button class="btn back-button" data-bs-target="#exampleModal" data-bs-toggle="modal">Add Ingredient</button>
+        <button class="btn back-button" :disabled="editable.quantity == null || editable.name == null" data-bs-target="#exampleModal" data-bs-toggle="modal">Add Ingredient</button>
       
     </form>
 
