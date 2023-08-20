@@ -49,9 +49,11 @@ export default {
         try 
         {
           if (await Pop.confirm("Are you sure you want to remove this ingredient?")) {
-            const ingredientId = AppState.activeIngredient.id
+            const ingredient = AppState.activeIngredient
+            const ingredientId = ingredient.id
             await ingredientsService.removeIngredient(ingredientId)
             this.openRecipeModal()
+            Pop.toast(`${ingredient.quantity} ${ingredient.name} was removed from your list!`)
           } return
         }
         catch (error)
