@@ -19,11 +19,16 @@
 
 <IngredientsOptionsModal id="IngredientsOptions">
   <template #header>Add Ingredient</template>
-<template #body>
-  
-</template>
+  <template #body>
+  </template>
 </IngredientsOptionsModal>
 
+<SecondaryModal id="editIngredientModal">
+<template #header>Edit Ingredient</template>
+<template #body>
+  <EditIngredientsForm/>
+</template>
+</SecondaryModal>
 </template>
 <script>
 
@@ -35,6 +40,7 @@ import MainModalComponent from "./components/MainModalComponent.vue";
 import SecondaryModal from "./components/SecondaryModal.vue";
 import IngredientsForm from "./components/IngredientsForm.vue";
 import IngredientsOptionsModal from "./components/IngredientOptionsModal.vue"
+import EditIngredientsForm from "./components/EditIngredientsForm.vue";
 
 
 export default {
@@ -43,7 +49,7 @@ export default {
             appState: computed(() => AppState)
         };
     },
-    components: { MainModalComponent, SecondaryModal, IngredientsForm, IngredientsOptionsModal}
+    components: { MainModalComponent, SecondaryModal, IngredientsForm, IngredientsOptionsModal, EditIngredientsForm }
 }
 </script>
 <style lang="scss">

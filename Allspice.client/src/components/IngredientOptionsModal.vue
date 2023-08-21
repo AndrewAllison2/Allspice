@@ -4,13 +4,13 @@
   <div class="modal-dialog">
     <div class="modal-content modal-elem">
       <div class="modal-header back-button">
-        <h3 class="modal-title text-center" id="ingredientsOptions">{{activeIngredient?.quantity}} {{ activeIngredient?.name }}</h3>
+        <h3 class="modal-title text-center" id="ingredientsOptionsModal">{{activeIngredient?.quantity}} {{ activeIngredient?.name }}</h3>
       </div>
       <div class="modal-body">
         <div class="d-flex flex-column justify-content-between align-items-center p-1">
 
           <div class="mb-3">
-            <button class="btn btn-primary">Edit</button>
+            <button class="btn btn-primary" data-bs-target="#editIngredientModal" data-bs-toggle="modal">Edit</button>
           </div>
 
           <div class="mb-3">

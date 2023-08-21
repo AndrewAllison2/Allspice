@@ -29,6 +29,11 @@ class IngredientsService {
     AppState.ingredients.splice(iIndex, 1)
   }
 
+  async editIngredient(formData, ingredientId) {
+    const res = await api.put(`api/ingredients/${ingredientId}`, formData)
+    logger.log('EDITING INGREDIENT', res.data)
+  }
+
 }
 
 
