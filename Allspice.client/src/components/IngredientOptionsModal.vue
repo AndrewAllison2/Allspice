@@ -52,6 +52,7 @@ export default {
             const ingredient = AppState.activeIngredient
             const ingredientId = ingredient.id
             await ingredientsService.removeIngredient(ingredientId)
+            await ingredientsService.getIngredientsByRecipeId(AppState.activeRecipe.id)
             this.openRecipeModal()
             Pop.toast(`${ingredient.quantity} ${ingredient.name} was removed from your list!`)
           } return
