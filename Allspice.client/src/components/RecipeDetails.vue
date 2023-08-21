@@ -11,7 +11,7 @@
       <div class="col-8 p-3">
         <div class="d-flex justify-content-end">
           <div class="favorite-elem text-center">
-          <i class="mdi mdi-heart-outline fs-2 selectable" title="Add to favorites" @click="CreateFavorite()"></i>
+          <i class="mdi mdi-heart-outline fs-2 selectable" title="Add to favorites" @click="createFavorite()"></i>
         </div>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           
@@ -73,9 +73,10 @@
 <script>
 import { computed,} from "vue";
 import { AppState } from "../AppState.js";
-import { logger } from "../utils/Logger.js";
 import RecipeStepsForm from "./RecipeStepsForm.vue";
 import { ingredientsService } from "../services/IngredientsService.js";
+import {favoritesService} from "../services/FavoritesService.js"
+import { logger } from "../utils/Logger.js";
 
 
 
@@ -91,8 +92,15 @@ export default {
           activeIngredient: computed(()=> AppState.activeIngredient),
 
           
-            async CreateFavorite() {
-                logger.log('Gonna make a fave!');
+            async createFavorite() {
+              const recipeId = AppState.activeRecipe.id
+              const formData = {recipeId: recipeId}
+              // const accountId = AppState.account.id
+              await favoritesService.createFavorite(formData)
+          },
+
+          async removeFavorite() {
+            logger.log('Remove Fav!')
           },
 
           setActiveIngredient(ingredient){
