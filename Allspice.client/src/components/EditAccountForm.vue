@@ -21,6 +21,7 @@
 import { ref } from "vue"
 import { accountService } from "../services/AccountService.js"
 import Pop from "../utils/Pop.js"
+import { Modal } from "bootstrap"
 
 export default {
   setup() {
@@ -33,7 +34,8 @@ export default {
         try 
         {
           const formData = editable.value
-        await accountService.editAccount(formData)
+          await accountService.editAccount(formData)
+          Modal.getOrCreateInstance('#editAccount').hide()
         }
         catch (error)
         {

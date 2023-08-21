@@ -1,4 +1,4 @@
-namespace Allspice.Services;
+ namespace Allspice.Services;
 
 public class AccountService
 {

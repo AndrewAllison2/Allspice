@@ -13,7 +13,10 @@
           <div class="favorite-elem text-center">
           <i class="mdi mdi-heart-outline fs-2 selectable" title="Add to favorites" @click="createFavorite()"></i>
         </div>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="align-items-center">
+          <i class="mdi mdi-delete fs-4 selectable" title="Delete Recipe" selectable @click="removeRecipe()"></i>
+          <button type="button" class="btn-close ms-2" title="Close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
           
         </div>
 
@@ -77,6 +80,9 @@ import RecipeStepsForm from "./RecipeStepsForm.vue";
 import { ingredientsService } from "../services/IngredientsService.js";
 import {favoritesService} from "../services/FavoritesService.js"
 import { logger } from "../utils/Logger.js";
+import Pop from "../utils/Pop.js";
+import { recipesService } from "../services/RecipesService.js";
+import { Modal } from "bootstrap";
 
 
 
@@ -89,7 +95,8 @@ export default {
           activeRecipe: computed(() => AppState.activeRecipe),
           // TODO COMPUTED CONDITIONALS 
           ingredients: computed(() => AppState.ingredients),
-          activeIngredient: computed(()=> AppState.activeIngredient),
+          activeIngredient: computed(() => AppState.activeIngredient),
+          favorites: computed(()=> AppState.favorites),
 
           
             async createFavorite() {
@@ -105,6 +112,24 @@ export default {
 
           setActiveIngredient(ingredient){
             ingredientsService.setActiveIngredient(ingredient)
+          },
+
+          async removeRecipe() {
+            try 
+            {
+              if (!await Pop.confirm('Are you sure you want to delete this recipe?')) {
+                return
+              }
+              const recipeToRemove = AppState.activeRecipe
+              const recipeId = AppState.activeRecipe.id
+              await recipesService.removeRecipe(recipeId)
+              Modal.getOrCreateInstance('#exampleModal').hide()
+              Pop.toast(`${recipeToRemove.title} has been deleted!`)
+            }
+            catch (error)
+            {
+              return Pop.error(error.message)
+            }
           }
         };
     },
