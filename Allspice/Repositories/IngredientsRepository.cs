@@ -26,6 +26,22 @@ public class IngredientsRepository
         return recipeId;
     }
 
+    internal Ingredient EditIngredient(Ingredient iData)
+    {
+        string sql = @"
+        UPDATE ingredients
+        SET
+        quantity = @Quantity,
+        name = @Name
+        WHERE id = @Id
+        LIMIT 1;
+        SELECT
+        LAST_INSERT_ID()
+        ;";
+        Ingredient ingredient = _db.QueryFirstOrDefault<Ingredient>(sql, iData);
+        return ingredient;
+    }
+
 
     // TODO WRITE SQL STRING AND METHOD IN REPO
     internal Ingredient GetIngredientById(int ingredientId)

@@ -50,4 +50,21 @@ public class IngredientsController : ControllerBase
       return BadRequest(e.Message);
     }
   }
+
+  [HttpPut("{ingredientId}")]
+  [Authorize]
+  public async Task<ActionResult<Ingredient>> EditIngredient([FromBody] Ingredient iData, int ingredientId, string userId)
+  {
+    try 
+    {
+      Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+      iData.Id = ingredientId;
+      Ingredient ingredient = _ingredientsService.EditIngredient(iData, ingredientId, userInfo.Id);
+      return Ok(ingredient);
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
 }

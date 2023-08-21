@@ -22,7 +22,18 @@ public class IngredientsService
     return ingredient;
     }
 
-  internal Ingredient GetIngredientById(int ingredientId)
+    internal Ingredient EditIngredient(Ingredient iData, int ingredientId, string id)
+    {
+    Ingredient originalIngredient = GetIngredientById(ingredientId);
+
+    originalIngredient.Quantity = iData.Quantity ?? originalIngredient.Quantity;
+    originalIngredient.Name = iData.Name ?? originalIngredient.Name;
+
+    Ingredient ingredient = _ingredientsRepository.EditIngredient(iData);
+    return ingredient;
+    }
+
+    internal Ingredient GetIngredientById(int ingredientId)
   {
     Ingredient ingredient = _ingredientsRepository.GetIngredientById(ingredientId);
 
