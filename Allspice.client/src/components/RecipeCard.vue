@@ -10,7 +10,7 @@
           </p>
         </div>
 
-        <div class="favorite-elem text-center text-danger">
+        <div v-if="favorites.recipeId == recipes.recipeId" class="favorite-elem text-center text-danger">
           <i class="mdi mdi-heart fs-4"></i>
         </div>
 
@@ -29,11 +29,13 @@
 
 
 <script>
+import { computed } from "vue";
 import { Recipe } from "../models/Recipe.js";
 import { ingredientsService } from "../services/IngredientsService.js";
 import { recipesService } from "../services/RecipesService.js";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
+import { AppState } from "../AppState.js";
 
 
 export default {
@@ -44,6 +46,8 @@ export default {
   setup(props) {
 
     return {
+      favorites: computed(() => AppState.favorites),
+      recipes: computed(()=> AppState.recipes),
       
 
       setActiveRecipe() {

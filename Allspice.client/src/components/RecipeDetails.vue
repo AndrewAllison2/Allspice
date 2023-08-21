@@ -145,7 +145,7 @@ export default {
   object-position: center;
 
   width: 100%;
-  height: 41.3em;
+  height: 41.5em;
 }
 
 .category-elem{
