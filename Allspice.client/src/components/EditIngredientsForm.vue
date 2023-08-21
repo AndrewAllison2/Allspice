@@ -42,6 +42,7 @@ export default {
           const formData = editable.value
           const ingredientId = AppState.activeIngredient.id
           await ingredientsService.editIngredient(formData, ingredientId)
+          await ingredientsService.getIngredientsByRecipeId(AppState.activeRecipe.id)
           editable.value = {}
 
         }

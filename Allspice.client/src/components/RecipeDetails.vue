@@ -71,7 +71,7 @@
 
 
 <script>
-import { computed} from "vue";
+import { computed,} from "vue";
 import { AppState } from "../AppState.js";
 import { logger } from "../utils/Logger.js";
 import RecipeStepsForm from "./RecipeStepsForm.vue";
@@ -82,11 +82,13 @@ import { ingredientsService } from "../services/IngredientsService.js";
 
 export default {
   setup() {
+
     
         return {
           activeRecipe: computed(() => AppState.activeRecipe),
           // TODO COMPUTED CONDITIONALS 
           ingredients: computed(() => AppState.ingredients),
+          activeIngredient: computed(()=> AppState.activeIngredient),
 
           
             async CreateFavorite() {

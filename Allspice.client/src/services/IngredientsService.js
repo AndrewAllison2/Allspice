@@ -31,7 +31,8 @@ class IngredientsService {
 
   async editIngredient(formData, ingredientId) {
     const res = await api.put(`api/ingredients/${ingredientId}`, formData)
-    logger.log('EDITING INGREDIENT', res.data)
+    // logger.log('EDITING INGREDIENT', res.data)
+    AppState.activeIngredient = new Ingredient(res.data)
   }
 
 }

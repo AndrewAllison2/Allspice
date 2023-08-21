@@ -43,8 +43,8 @@ export default {
 
   setup(props) {
 
-    
     return {
+      
 
       setActiveRecipe() {
         recipesService.setActiveRecipe(props.recipeProp)
