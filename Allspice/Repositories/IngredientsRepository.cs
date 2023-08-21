@@ -26,7 +26,7 @@ public class IngredientsRepository
         return recipeId;
     }
 
-    internal Ingredient EditIngredient(Ingredient iData)
+    internal Ingredient EditIngredient(Ingredient originalI)
     {
         string sql = @"
         UPDATE ingredients
@@ -35,10 +35,9 @@ public class IngredientsRepository
         name = @Name
         WHERE id = @Id
         LIMIT 1;
-        SELECT
-        LAST_INSERT_ID()
+        SELECT * FROM ingredients WHERE id=@Id
         ;";
-        Ingredient ingredient = _db.QueryFirstOrDefault<Ingredient>(sql, iData);
+        Ingredient ingredient = _db.QueryFirstOrDefault<Ingredient>(sql, originalI);
         return ingredient;
     }
 

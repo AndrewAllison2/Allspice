@@ -22,14 +22,14 @@ public class IngredientsService
     return ingredient;
     }
 
-    internal Ingredient EditIngredient(Ingredient iData, int ingredientId, string id)
+    internal Ingredient EditIngredient(Ingredient iData, int ingredientId)
     {
     Ingredient originalIngredient = GetIngredientById(ingredientId);
 
     originalIngredient.Quantity = iData.Quantity ?? originalIngredient.Quantity;
     originalIngredient.Name = iData.Name ?? originalIngredient.Name;
 
-    Ingredient ingredient = _ingredientsRepository.EditIngredient(iData);
+    Ingredient ingredient = _ingredientsRepository.EditIngredient(originalIngredient);
     return ingredient;
     }
 
