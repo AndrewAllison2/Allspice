@@ -4,15 +4,21 @@
     <img class="rounded" :src="account.picture" alt="" />
     <p>{{ account.email }}</p>
   </div>
+
+  <button class="btn-btn-info" data-bs-target="#editAccount" data-bs-toggle="modal">Edit Account</button>
 </template>
 
 <script>
 import { computed } from 'vue';
 import { AppState } from '../AppState';
+
 export default {
   setup() {
+
+
+
     return {
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
     }
   }
 }

@@ -29,6 +29,13 @@
   <EditIngredientsForm/>
 </template>
 </SecondaryModal>
+
+<SecondaryModal id="editAccount">
+<template #header>Update Account</template>
+<template #body>
+  <EditAccountForm/>
+</template>
+</SecondaryModal>
 </template>
 <script>
 
@@ -41,6 +48,7 @@ import SecondaryModal from "./components/SecondaryModal.vue";
 import IngredientsForm from "./components/IngredientsForm.vue";
 import IngredientsOptionsModal from "./components/IngredientOptionsModal.vue"
 import EditIngredientsForm from "./components/EditIngredientsForm.vue";
+import EditAccountForm from "./components/EditAccountForm.vue";
 
 
 export default {
@@ -49,7 +57,7 @@ export default {
             appState: computed(() => AppState)
         };
     },
-    components: { MainModalComponent, SecondaryModal, IngredientsForm, IngredientsOptionsModal, EditIngredientsForm }
+    components: { MainModalComponent, SecondaryModal, IngredientsForm, IngredientsOptionsModal, EditIngredientsForm, EditAccountForm }
 }
 </script>
 <style lang="scss">
