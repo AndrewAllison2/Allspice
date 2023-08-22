@@ -10,7 +10,7 @@
           </p>
         </div>
 
-        <div v-if="favorites.recipeId == recipes.recipeId" class="favorite-elem text-center text-danger">
+        <div v-if="myFavorites" class="favorite-elem text-center text-danger">
           <i class="mdi mdi-heart fs-4"></i>
         </div>
 
@@ -46,7 +46,7 @@ export default {
   setup(props) {
 
     return {
-      favorites: computed(() => AppState.favorites),
+      myFavorites: computed(() => AppState.favorites.find(f=> f.accountId == AppState.account.id)),
       recipes: computed(()=> AppState.recipes),
       
 

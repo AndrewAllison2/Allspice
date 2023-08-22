@@ -8,6 +8,7 @@
           <div class="d-flex justify-content-end align-items-center">
 
             <div class="me-3 mt-1">
+              <button class="btn back-button" @click="getMyFavorites()">Get Favs</button>
               <button class="btn back-button" data-bs-target="#createRecipe" data-bs-toggle="modal">
                 <i class="mdi mdi-plus fs-4" > Add Recipe</i>
               </button>
@@ -41,38 +42,54 @@
 import Login from "../components/Login.vue";
 import Pop from "../utils/Pop.js";
 import {recipesService} from '../services/RecipesService.js'
-import { computed, onMounted} from "vue";
+import { computed, onMounted, onUpdated, watchEffect} from "vue";
 import { AppState } from "../AppState.js";
 import RecipeCard from "../components/RecipeCard.vue";
+import { accountService } from "../services/AccountService.js";
 
 
 
 export default {
   setup() {
 
-    async function getRecipes(){
-      try 
-      {
+    async function getRecipes() {
+      try {
         await recipesService.getRecipes()
       }
-      catch (error)
-      {
+      catch (error) {
         return Pop.error(error.message)
       }
     }
 
-    onMounted(() => {
-      getRecipes()
-    })
-    
-    return {
-
-      recipes: computed(() => AppState.recipes),
-
+    // async function getMyFavorites() {
+    //   try {
+    //     await accountService.getMyFavorites()
+    //   }
+    //   catch (error) {
+    //     return Pop.error(error.message)
+    //   }
+    // }
       
-        };
-    },
-    components: { Login, RecipeCard }
+
+      onMounted(() => {
+        getRecipes()
+      })
+
+      watchEffect(() => {
+        if (AppState.account) {
+          accountService.getMyFavorites()
+        } return
+      })
+
+      return {
+
+        recipes: computed(() => AppState.recipes),
+
+
+      };
+    
+  },
+  components: { Login, RecipeCard }
 }
 </script>
 

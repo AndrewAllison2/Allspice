@@ -96,7 +96,8 @@ export default {
           // TODO COMPUTED CONDITIONALS 
           ingredients: computed(() => AppState.ingredients),
           activeIngredient: computed(() => AppState.activeIngredient),
-          favorites: computed(()=> AppState.favorites),
+          favorites: computed(() => AppState.favorites),
+
 
           
           async createFavorite() {
