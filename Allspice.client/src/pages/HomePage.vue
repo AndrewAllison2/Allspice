@@ -97,7 +97,6 @@ export default {
 
       return {
 
-        
         account: computed(()=> AppState.account),
         recipes: computed(() => {
           if (filterBy.value == '') {

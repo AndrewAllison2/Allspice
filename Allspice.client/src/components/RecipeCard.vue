@@ -10,8 +10,11 @@
           </p>
         </div>
 
-        <div class="favorite-elem text-center text-danger">
+        <div v-if="favorites.recipeId == this.recipeProp.id" class="favorite-elem text-center text-danger">
           <i class="mdi mdi-heart fs-4"></i>
+        </div>
+        <div v-else class="favorite-elem text-center text-danger">
+          <i class="mdi mdi-heart-outline fs-4"></i>
         </div>
 
         <div class="info-elem">
@@ -47,7 +50,9 @@ export default {
 
     return {
 
-      recipes: computed(()=> AppState.recipes),
+      recipes: computed(() => AppState.recipes),
+
+      favorites: computed(() => AppState.favorites),
       
 
       setActiveRecipe() {
