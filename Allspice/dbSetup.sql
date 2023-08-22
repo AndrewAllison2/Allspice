@@ -13,7 +13,7 @@ CREATE TABLE recipes(
   title VARCHAR(255) NOT NULL,
   instructions VARCHAR(800) NOT NULL,
   img VARCHAR(500) NOT NULL,
-  category VARCHAR(255) NOT NULL,
+  category ENUM ('Mexican', 'Specialty Coffee', 'Soup', 'Italian', 'Cheese'),
   createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
   updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
   creatorId VARCHAR(255) NOT NULL,

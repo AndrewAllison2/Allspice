@@ -29,6 +29,13 @@
       </div>
 
       <div class="row">
+        <div class="col-8">
+          <button class="btn-btn-secondary" @click="filterBy=''">All</button>
+          <button class="btn-btn-secondary" @click="filterBy='soup'">Soup</button>
+        </div>
+      </div>
+
+      <div class="row">
         <div class="col-4" v-for="recipe in recipes" :key="recipe.id">
           <RecipeCard :recipeProp="recipe"/>
         </div>
@@ -41,15 +48,16 @@
 import Login from "../components/Login.vue";
 import Pop from "../utils/Pop.js";
 import {recipesService} from '../services/RecipesService.js'
-import { computed, onMounted, watchEffect} from "vue";
+import { computed, onMounted, ref } from "vue";
 import { AppState } from "../AppState.js";
 import RecipeCard from "../components/RecipeCard.vue";
-import { accountService } from "../services/AccountService.js";
+
 
 
 
 export default {
   setup() {
+    const filterBy = ref('')
 
     async function getRecipes() {
       try {
@@ -82,7 +90,14 @@ export default {
 
       return {
 
-        recipes: computed(() => AppState.recipes),
+        recipes: computed(() => {
+          if (filterBy.value == '') {
+            return AppState.recipes
+          } else {
+            return AppState.recipes.filter(a => a.category == filterBy.value)
+          }
+        }),
+        filterBy,
 
 
       };
