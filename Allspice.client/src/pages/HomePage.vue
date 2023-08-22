@@ -29,9 +29,13 @@
       </div>
 
       <div class="row">
-        <div class="col-8">
-          <button class="btn-btn-secondary" @click="filterBy=''">All</button>
-          <button class="btn-btn-secondary" @click="filterBy='soup'">Soup</button>
+        <div class="col-8 m-auto d-flex justify-content-around mb-3">
+          <button class="btn-btn-secondary rounded p-2" @click="filterBy=''">All</button>
+          <button class="btn-btn-secondary rounded p-2" @click="filterBy='Cheese'">Cheese</button>
+          <button class="btn-btn-secondary rounded p-2" @click="filterBy='Italian'">Italian</button>
+          <button class="btn-btn-secondary rounded p-2" @click="filterBy='Mexican'">Mexican</button>
+          <button class="btn-btn-secondary rounded p-2" @click="filterBy='Specialty Coffee'">Specialty Coffee</button>
+          <button class="btn-btn-secondary rounded p-2" @click="filterBy='Soup'">Soup</button>
         </div>
       </div>
 
@@ -48,9 +52,10 @@
 import Login from "../components/Login.vue";
 import Pop from "../utils/Pop.js";
 import {recipesService} from '../services/RecipesService.js'
-import { computed, onMounted, ref } from "vue";
+import { computed, onBeforeUpdate, onMounted, ref, watchEffect } from "vue";
 import { AppState } from "../AppState.js";
 import RecipeCard from "../components/RecipeCard.vue";
+import { accountService } from "../services/AccountService.js";
 
 
 
@@ -80,16 +85,19 @@ export default {
 
       onMounted(() => {
         getRecipes()
+        
       })
 
-      // watchEffect(() => {
-      //   if (AppState.account) {
-      //     accountService.getMyFavorites()
-      //   } return
-      // })
+    watchEffect(() => {
+        if (AppState.account.id != null) {
+          accountService.getMyFavorites()
+          
+        }return
+      })
 
       return {
 
+        account: computed(()=> AppState.account),
         recipes: computed(() => {
           if (filterBy.value == '') {
             return AppState.recipes

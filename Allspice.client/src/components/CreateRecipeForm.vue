@@ -3,25 +3,31 @@
   <form action="" @submit.prevent="createRecipe()">
 
       <div class="form-floating mb-3">
-        <input type="text" class="form-control" :required="editable.title" id="recipeTitle" placeholder="Name of Recipe" v-model="editable.title">
+        <input type="text" class="form-control" :required="editable.title" minlength="1" maxlength="255" id="recipeTitle" placeholder="Name of Recipe" v-model="editable.title">
         <label for="recipeTitle">Recipe Title</label>
       </div>
 
       <div class="form-floating mb-3">
-        <input type="text" class="form-control" :required="editable.instructions" placeholder="Add Instructions!" v-model="editable.instructions" id="recipeInstructions">
+        <input type="text" class="form-control" :required="editable.instructions" maxlength="800" placeholder="Add Instructions!" v-model="editable.instructions" id="recipeInstructions">
         <label for="recipeInstructions">Instructions</label>
       </div>
 
       <div class="form-floating mb-3">
-        <input type="text" class="form-control" :required="editable.img" placeholder="Add an Image!" v-model="editable.img" id="recipeImg">
+        <input type="text" class="form-control" :required="editable.img" maxlength="500" placeholder="Add an Image!" v-model="editable.img" id="recipeImg">
         <label for="recipeImg">Add an Image</label>
       </div>
 
       <div class="mb-3">
-        <label for="recipeCategory">Pick A Category</label>
-        <select class="form-control" :required="editable.category" placeholder="Pick A Category" v-model="editable.category" id="recipeCategory">
+        <!-- <label for="recipeCategory">Pick A Category</label>
+        <select class="form-select" :required="editable.category" placeholder="Pick A Category" v-model="editable.category" id="recipeCategory">
           <option v-for="category in categories" :key="category" value="category">{{ category }}</option>
-        </select>
+        </select> -->
+
+        <label for="recipeCategory" class="form-label">Pick A Category</label>
+          <select v-model="editable.category" required class="form-select mb-3" id="recipeCategory">
+            <option v-for="category in categories" :key="category" :value="category">
+            {{ category }}</option>
+          </select>
       </div>
       
         <button class="btn back-button" data-bs-target="#createRecipe" data-bs-toggle="modal" >Add Recipe</button>
