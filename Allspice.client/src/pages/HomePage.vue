@@ -52,7 +52,7 @@
 import Login from "../components/Login.vue";
 import Pop from "../utils/Pop.js";
 import {recipesService} from '../services/RecipesService.js'
-import { computed, onBeforeUpdate, onMounted, ref, watchEffect } from "vue";
+import { computed, onMounted, ref, watchEffect } from "vue";
 import { AppState } from "../AppState.js";
 import RecipeCard from "../components/RecipeCard.vue";
 import { accountService } from "../services/AccountService.js";
@@ -97,6 +97,7 @@ export default {
 
       return {
 
+        
         account: computed(()=> AppState.account),
         recipes: computed(() => {
           if (filterBy.value == '') {
