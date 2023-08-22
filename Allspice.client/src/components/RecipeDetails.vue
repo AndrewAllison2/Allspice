@@ -12,6 +12,7 @@
         <div class="d-flex justify-content-end">
           <div class="favorite-elem text-center">
           <i class="mdi mdi-heart-outline fs-2 selectable" title="Add to favorites" @click="createFavorite()"></i>
+          <i class="mdi mdi-heart fs-2 selectable" title="Remove from favorites" @click="removeFavorite(activeRecipe.id)"></i>
         </div>
         <div class="align-items-center">
           <i class="mdi mdi-delete fs-4 selectable" title="Delete Recipe" selectable @click="removeRecipe()"></i>
@@ -101,16 +102,35 @@ export default {
 
           
           async createFavorite() {
+              try 
+              {
               const activeRecipe = AppState.activeRecipe
               const recipeId = AppState.activeRecipe.id
               const formData = {recipeId: recipeId}
               // const accountId = AppState.account.id
               await favoritesService.createFavorite(formData)
               Pop.toast(`${activeRecipe.title} has been added to your favorites!`)
+              }
+              catch (error)
+              {
+                return Pop.error(error.message)
+              }
           },
 
-          async removeFavorite() {
-            logger.log('Remove Fav!')
+          async removeFavorite(recipeId) {
+            try 
+            {
+              if (!await Pop.confirm('Unfavorite this Recipe?')) {
+                return
+              }
+              const favorite = AppState.favorites.find(f => f.recipeId == recipeId)
+              await favoritesService.removeFavorite(favorite.id)
+              Pop.toast(`${this.activeRecipe.title} has been removed from your favorites!`)
+            }
+            catch (error)
+            {
+              return Pop.error(error.message)
+            }
           },
 
           setActiveIngredient(ingredient){
