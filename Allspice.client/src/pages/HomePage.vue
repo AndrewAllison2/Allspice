@@ -7,6 +7,12 @@
 
           <div class="d-flex justify-content-end align-items-center">
 
+            <div class="me-3 mt-1">
+              <button class="btn back-button" data-bs-target="#createRecipe" data-bs-toggle="modal">
+                <i class="mdi mdi-plus fs-4" > Add Recipe</i>
+              </button>
+            </div>
+
             <div class="me-3">
               Search Bar
             </div>
@@ -27,10 +33,6 @@
           <RecipeCard :recipeProp="recipe"/>
         </div>
       </div>
-    </div>
-
-    <div>
-      <i class="mdi mdi-plus fs-1 back-button selectable" data-bs-target="#createRecipe" data-bs-toggle="modal"></i>
     </div>
   </div>
 </template>
@@ -83,9 +85,5 @@ export default {
   border-radius: 1%;
   height: 40vh;
   width: 97vw;
-}
-
-.back-button{
-  border-radius: 100%;
 }
 </style>

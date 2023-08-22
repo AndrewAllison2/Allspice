@@ -99,11 +99,13 @@ export default {
           favorites: computed(()=> AppState.favorites),
 
           
-            async createFavorite() {
+          async createFavorite() {
+              const activeRecipe = AppState.activeRecipe
               const recipeId = AppState.activeRecipe.id
               const formData = {recipeId: recipeId}
               // const accountId = AppState.account.id
               await favoritesService.createFavorite(formData)
+              Pop.toast(`${activeRecipe.title} has been added to your favorites!`)
           },
 
           async removeFavorite() {
