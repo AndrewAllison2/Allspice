@@ -53,13 +53,15 @@
               <div class="text-center">
                 <ul v-for="i in ingredients" :key="i.id">
                   <li>
-                    <p class="p-2 mb-1 selectable" @click="setActiveIngredient(i)" data-bs-toggle="modal" data-bs-target="#IngredientsOptions">{{ i?.quantity }} {{ i?.name }}</p>
+                    <p v-if="i.creatorId == account.id" class="p-2 mb-1 selectable" @click="setActiveIngredient(i)" data-bs-toggle="modal" data-bs-target="#IngredientsOptions">{{ i?.quantity }} {{ i?.name }}</p>
+                    <p v-else class="p-2 mb-1">{{ i?.quantity }} {{ i?.name }}</p>
+
                   </li>
                 </ul>
               </div>
             </div>
             <div class="card-background text-center">
-              <i class="mdi mdi-plus fs-4 selectable text-white" title="Add an Ingredient" data-bs-target="#AddIngredientModal" data-bs-toggle="modal"> Add Ingredient</i>
+              <i v-if="activeRecipe?.creatorId == account?.id" class="mdi mdi-plus fs-4 selectable text-white" title="Add an Ingredient" data-bs-target="#AddIngredientModal" data-bs-toggle="modal"> Add Ingredient</i>
             </div>
           </div>
 
@@ -98,6 +100,7 @@ export default {
           ingredients: computed(() => AppState.ingredients),
           activeIngredient: computed(() => AppState.activeIngredient),
           favorites: computed(() => AppState.favorites),
+          account: computed(()=> AppState.account),
 
 
           
