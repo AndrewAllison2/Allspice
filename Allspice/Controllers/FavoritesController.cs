@@ -27,7 +27,7 @@ public class FavoritesController : ControllerBase
       {
       Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
       favoriteData.AccountId = userInfo.Id;
-      Favorite favorite = _favoritesService.CreateFavorite(favoriteData);
+      Favorite favorite = _favoritesService.CreateFavorite(favoriteData, userInfo.Id);
       return Ok(favorite);
       }
       catch (Exception e)

@@ -8,7 +8,6 @@
           <div class="d-flex justify-content-end align-items-center">
 
             <div class="me-3 mt-1">
-              <button class="btn back-button" @click="getMyFavorites()">Get Favs</button>
               <button class="btn back-button" data-bs-target="#createRecipe" data-bs-toggle="modal">
                 <i class="mdi mdi-plus fs-4" > Add Recipe</i>
               </button>
@@ -42,7 +41,7 @@
 import Login from "../components/Login.vue";
 import Pop from "../utils/Pop.js";
 import {recipesService} from '../services/RecipesService.js'
-import { computed, onMounted, onUpdated, watchEffect} from "vue";
+import { computed, onMounted, watchEffect} from "vue";
 import { AppState } from "../AppState.js";
 import RecipeCard from "../components/RecipeCard.vue";
 import { accountService } from "../services/AccountService.js";
@@ -75,11 +74,11 @@ export default {
         getRecipes()
       })
 
-      watchEffect(() => {
-        if (AppState.account) {
-          accountService.getMyFavorites()
-        } return
-      })
+      // watchEffect(() => {
+      //   if (AppState.account) {
+      //     accountService.getMyFavorites()
+      //   } return
+      // })
 
       return {
 

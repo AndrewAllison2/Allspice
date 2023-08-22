@@ -10,7 +10,7 @@ public class FavoritesService
         _favoritesRepository = favoritesRepository;
     }
 
-    internal Favorite CreateFavorite(Favorite favoriteData)
+    internal Favorite CreateFavorite(Favorite favoriteData, string userId)
     {
     Favorite favorite = _favoritesRepository.CreateFavorite(favoriteData);
     return favorite;

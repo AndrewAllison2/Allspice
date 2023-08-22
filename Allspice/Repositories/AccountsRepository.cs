@@ -39,9 +39,11 @@ public class AccountsRepository
             SET 
               name = @Name,
               picture = @Picture
-            WHERE id = @Id;";
-    _db.Execute(sql, update);
-    return update;
+            WHERE id = @Id
+            SELECT * FROM accounts
+            WHERE id=@Id;";
+    Account account = _db.QueryFirstOrDefault<Account>(sql, update);
+    return account;
   }
 }
 

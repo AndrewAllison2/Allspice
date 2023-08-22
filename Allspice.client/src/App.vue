@@ -35,6 +35,7 @@
 <template #body>
   <EditAccountForm/>
 </template>
+
 </SecondaryModal>
 <SecondaryModal id="createRecipe">
 <template #header>Add Recipe</template>
