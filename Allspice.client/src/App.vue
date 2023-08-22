@@ -36,6 +36,12 @@
   <EditAccountForm/>
 </template>
 </SecondaryModal>
+<SecondaryModal id="createRecipe">
+<template #header>Add Recipe</template>
+<template #body>
+  <CreateRecipeForm/>
+</template>
+</SecondaryModal>
 </template>
 <script>
 
@@ -49,6 +55,7 @@ import IngredientsForm from "./components/IngredientsForm.vue";
 import IngredientsOptionsModal from "./components/IngredientOptionsModal.vue"
 import EditIngredientsForm from "./components/EditIngredientsForm.vue";
 import EditAccountForm from "./components/EditAccountForm.vue";
+import CreateRecipeForm from "./components/CreateRecipeForm.vue";
 
 
 export default {
@@ -57,20 +64,14 @@ export default {
             appState: computed(() => AppState)
         };
     },
-    components: { MainModalComponent, SecondaryModal, IngredientsForm, IngredientsOptionsModal, EditIngredientsForm, EditAccountForm }
+    components: { MainModalComponent, SecondaryModal, IngredientsForm, IngredientsOptionsModal, EditIngredientsForm, EditAccountForm, CreateRecipeForm }
 }
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
 
-:root{
-  --main-height: calc(100vh - 32px - 64px);
-}
-
-
-footer {
-  display: grid;
-  place-content: center;
-  height: 32px;
+.back-button{
+  background-color: #527360;
+  color: white;
 }
 </style>

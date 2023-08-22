@@ -29,6 +29,11 @@ class RecipesService {
     const rIndex = AppState.recipes.findIndex(r => r.id == recipeId)
     AppState.recipes.splice(rIndex, 1)
   }
+
+  async createRecipe(formData) {
+    const res = await api.post('api/recipes', formData)
+    AppState.recipes.push(new Recipe(res.data))
+  }
 }
 
 export const recipesService = new RecipesService()

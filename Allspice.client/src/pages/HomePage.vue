@@ -28,6 +28,10 @@
         </div>
       </div>
     </div>
+
+    <div>
+      <i class="mdi mdi-plus fs-1 back-button selectable" data-bs-target="#createRecipe" data-bs-toggle="modal"></i>
+    </div>
   </div>
 </template>
 
@@ -35,10 +39,10 @@
 import Login from "../components/Login.vue";
 import Pop from "../utils/Pop.js";
 import {recipesService} from '../services/RecipesService.js'
-import { computed, onMounted, watchEffect} from "vue";
+import { computed, onMounted} from "vue";
 import { AppState } from "../AppState.js";
 import RecipeCard from "../components/RecipeCard.vue";
-import { favoritesService } from "../services/FavoritesService.js";
+
 
 
 export default {
@@ -61,7 +65,7 @@ export default {
     
     return {
 
-      recipes: computed(()=> AppState.recipes)
+      recipes: computed(() => AppState.recipes),
 
       
         };
@@ -79,5 +83,9 @@ export default {
   border-radius: 1%;
   height: 40vh;
   width: 97vw;
+}
+
+.back-button{
+  border-radius: 100%;
 }
 </style>

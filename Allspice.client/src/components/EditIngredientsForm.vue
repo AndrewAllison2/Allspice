@@ -1,5 +1,8 @@
 <template>
 
+<div class="text-center mb-3">
+  <h4>{{ activeIngredient?.quantity }} {{ activeIngredient?.name }}</h4>
+</div>
   <div>
   <form action="" @submit.prevent="editIngredient()">
 
@@ -23,7 +26,7 @@
 
 
 <script>
-import {ref } from "vue";
+import {computed, ref } from "vue";
 import { AppState } from "../AppState.js";
 import Pop from "../utils/Pop.js";
 import { ingredientsService } from "../services/IngredientsService.js";
@@ -35,6 +38,7 @@ export default {
 
     return {
       editable,
+      activeIngredient: computed(()=> AppState.activeIngredient),
 
       async editIngredient() {
         try 
