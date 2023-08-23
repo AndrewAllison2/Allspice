@@ -9,14 +9,13 @@ class FavoritesService {
     const res = await api.post(`api/favorites`, formData)
     logger.log('Making fav', res.data)
     const newFav = new Favorite(res.data)
-    AppState.favorites.push(newFav)
+    AppState.myFavorites.push(newFav)
   }
-
   async removeFavorite(favoriteId) {
     const res = await api.delete(`api/favorites/${favoriteId}`)
     logger.log(res.data)
-    const favIndex = AppState.favorites.findIndex(i => i.id == favoriteId)
-    AppState.favorites.splice(favIndex, 1)
+    // const favIndex = AppState.favorites.findIndex(i => i.id == favoriteId)
+    // AppState.favorites.splice(favIndex, 1)
     const myFavIndex = AppState.myFavorites.findIndex(i => i.id == favoriteId)
     AppState.myFavorites.splice(myFavIndex, 1)
   }

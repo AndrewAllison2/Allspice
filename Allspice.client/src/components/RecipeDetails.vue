@@ -87,6 +87,7 @@ import Pop from "../utils/Pop.js";
 import { recipesService } from "../services/RecipesService.js";
 import { Modal } from "bootstrap";
 import { accountService } from "../services/AccountService.js";
+import { logger } from "../utils/Logger.js";
 
 
 
@@ -148,7 +149,9 @@ export default {
                 return
               }
               const favorite = AppState.myFavorites.find(f => f.recipeId == recipeId)
-              await favoritesService.removeFavorite(favorite.id)
+              const favoriteId = favorite.id
+              logger.log('Fav to delete', favoriteId)
+              await favoritesService.removeFavorite(favoriteId)
               Pop.toast(`${this.activeRecipe.title} has been removed from your favorites!`)
             }
             catch (error)
