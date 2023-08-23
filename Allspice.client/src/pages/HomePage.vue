@@ -90,7 +90,7 @@ export default {
       })
 
     watchEffect(() => {
-        if (AppState.account.id != null) {
+        if (AppState.account?.id) {
           accountService.getMyFavorites()
           
         }return

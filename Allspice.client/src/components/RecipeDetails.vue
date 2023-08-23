@@ -117,7 +117,7 @@ export default {
           favorites: computed(() => AppState.favorites),
           account: computed(() => AppState.account),
           isFavorite: computed(() => {
-            let fav = AppState.myFavorites?.find(f => f?.recipeId == AppState.activeRecipe?.id)
+            let fav = AppState.myFavorites.find(f => f?.recipeId == AppState.activeRecipe?.id)
             if (fav?.accountId == AppState.account?.id) {
               return fav
             } return null
@@ -148,7 +148,7 @@ export default {
               if (!await Pop.confirm('Unfavorite this Recipe?')) {
                 return
               }
-              const favorite = AppState.myFavorites.find(f => f.recipeId == recipeId)
+              const favorite = AppState.myFavorites.find(f => f.id == recipeId && f.accountId == AppState.account.id)
               const favoriteId = favorite.id
               logger.log('Fav to delete', favoriteId)
               await favoritesService.removeFavorite(favoriteId)
