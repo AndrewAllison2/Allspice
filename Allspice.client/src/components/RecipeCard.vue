@@ -10,7 +10,7 @@
           </p>
         </div>
 
-        <div v-if="favorites.recipeId == this.recipeProp.id" class="favorite-elem text-center text-danger">
+        <div v-if="isFavorite" class="favorite-elem text-center text-danger">
           <i class="mdi mdi-heart fs-4"></i>
         </div>
         <div v-else class="favorite-elem text-center text-danger">
@@ -52,7 +52,12 @@ export default {
 
       recipes: computed(() => AppState.recipes),
 
-      favorites: computed(() => AppState.favorites),
+            isFavorite: computed(() => {
+        let fav = AppState.myFavorites?.find(f => f?.recipeId == AppState.recipes?.id)
+        if (fav?.accountId == AppState.account?.id) {
+          return fav
+        } return null
+      }),
       
 
       setActiveRecipe() {

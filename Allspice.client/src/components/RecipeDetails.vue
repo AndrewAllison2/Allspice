@@ -15,7 +15,7 @@
           <i v-else class="mdi mdi-heart-outline fs-2 selectable" title="Add to favorites" @click="createFavorite()"></i>
         </div>
         <div class="align-items-center">
-          <i class="mdi mdi-delete fs-4 selectable" title="Delete Recipe" selectable @click="removeRecipe()"></i>
+          <i v-if="activeRecipe?.creatorId == account.id" class="mdi mdi-delete fs-4 selectable" title="Delete Recipe" selectable @click="removeRecipe()"></i>
           <button type="button" class="btn-close ms-2" title="Close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
           
@@ -37,7 +37,7 @@
               <div class="text-center">
                 <p class="mb-0 p-2">{{ activeRecipe?.instructions }}</p>
               </div>
-              <div class="ps-2">
+              <div v-if="activeRecipe?.creatorId == account.id" class="ps-2">
                 <!-- recipe steps form component here -->
                 <RecipeStepsForm/>
               </div>
@@ -96,7 +96,7 @@ export default {
   setup() {
 
     function _computeFavorite() {
-      const foundFav = AppState.favorites?.find(f => f?.recipeId == AppState.activeRecipe?.id)
+      const foundFav = AppState.myFavorites?.find(f => f?.recipeId == AppState.activeRecipe?.id)
       if (foundFav?.accountId == AppState.account?.id) {
         return foundFav
       } return null
@@ -118,7 +118,7 @@ export default {
           account: computed(() => AppState.account),
           isFavorite: computed(() => {
             let fav = AppState.myFavorites?.find(f => f?.recipeId == AppState.activeRecipe?.id)
-            if (fav) {
+            if (fav?.accountId == AppState.account?.id) {
               return fav
             } return null
           }),

@@ -62,6 +62,7 @@ import { accountService } from "../services/AccountService.js";
 
 export default {
   setup() {
+    const sortBy = ref('')
     const filterBy = ref('')
 
     async function getRecipes() {
@@ -95,16 +96,17 @@ export default {
         }return
       })
 
-      return {
+    return {
 
-        account: computed(()=> AppState.account),
-        recipes: computed(() => {
-          if (filterBy.value == '') {
-            return AppState.recipes
-          } else {
-            return AppState.recipes.filter(a => a.category == filterBy.value)
-          }
-        }),
+      account: computed(() => AppState.account),
+      recipes: computed(() => {
+        if (filterBy.value == '') {
+          return AppState.recipes
+        } else {
+          return AppState.recipes.filter(a => a.category == filterBy.value)
+        }
+      }),
+    
         filterBy,
 
 
