@@ -77,7 +77,7 @@
 
 
 <script>
-import { computed, onMounted, watchEffect} from "vue";
+import { computed, onMounted, watch, watchEffect} from "vue";
 import { AppState } from "../AppState.js";
 import RecipeStepsForm from "./RecipeStepsForm.vue";
 import { ingredientsService } from "../services/IngredientsService.js";
@@ -93,6 +93,15 @@ import { accountService } from "../services/AccountService.js";
 
 export default {
   setup() {
+
+    function _computeFavorite() {
+      let activeFav = AppState.favorites.find(f => f.recipeId == AppState.activeRecipe?.id)
+            if (activeFav) {
+              return true
+            } return false
+    }
+
+    watchEffect(()=> _computeFavorite())
 
 
     
