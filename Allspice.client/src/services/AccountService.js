@@ -17,7 +17,7 @@ class AccountService {
   async editAccount(formData) {
     const res = await api.put('/account', formData)
     logger.log('EDITING ACCOUNT', res.data)
-    AppState.account - new Account(res.data)
+    AppState.account = new Account(res.data)
   }
 
   async getMyFavorites() {
