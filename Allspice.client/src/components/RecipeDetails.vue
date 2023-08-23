@@ -11,8 +11,8 @@
       <div class="col-8 p-3">
         <div class="d-flex justify-content-end">
           <div class="favorite-elem text-center">
-          <i class="mdi mdi-heart-outline fs-2 selectable" title="Add to favorites" @click="createFavorite()"></i>
-          <i class="mdi mdi-heart fs-2 selectable" title="Remove from favorites" @click="removeFavorite(activeRecipe.id)"></i>
+            <i v-if="isFavorite == true" class="mdi mdi-heart fs-2 selectable" title="Remove from favorites" @click="removeFavorite(activeRecipe.id)"></i>
+          <i v-else class="mdi mdi-heart-outline fs-2 selectable" title="Add to favorites" @click="createFavorite()"></i>
         </div>
         <div class="align-items-center">
           <i class="mdi mdi-delete fs-4 selectable" title="Delete Recipe" selectable @click="removeRecipe()"></i>
@@ -77,21 +77,23 @@
 
 
 <script>
-import { computed,} from "vue";
+import { computed, onMounted, watchEffect} from "vue";
 import { AppState } from "../AppState.js";
 import RecipeStepsForm from "./RecipeStepsForm.vue";
 import { ingredientsService } from "../services/IngredientsService.js";
 import {favoritesService} from "../services/FavoritesService.js"
-import { logger } from "../utils/Logger.js";
+
 import Pop from "../utils/Pop.js";
 import { recipesService } from "../services/RecipesService.js";
 import { Modal } from "bootstrap";
+import { accountService } from "../services/AccountService.js";
 
 
 
 
 export default {
   setup() {
+
 
     
         return {
@@ -100,7 +102,13 @@ export default {
           ingredients: computed(() => AppState.ingredients),
           activeIngredient: computed(() => AppState.activeIngredient),
           favorites: computed(() => AppState.favorites),
-          account: computed(()=> AppState.account),
+          account: computed(() => AppState.account),
+          isFavorite: computed(() => {
+            let activeFav = AppState.favorites.find(f => f.recipeId == AppState.activeRecipe?.id)
+            if (activeFav) {
+              return true
+            } return false
+          }),
 
 
           
@@ -111,7 +119,8 @@ export default {
               const recipeId = AppState.activeRecipe.id
               const formData = {recipeId: recipeId}
               // const accountId = AppState.account.id
-              await favoritesService.createFavorite(formData)
+                await favoritesService.createFavorite(formData)
+                await accountService.getMyFavorites
               Pop.toast(`${activeRecipe.title} has been added to your favorites!`)
               }
               catch (error)
@@ -156,7 +165,9 @@ export default {
             {
               return Pop.error(error.message)
             }
-          }
+          },
+
+
         };
     },
     components: { RecipeStepsForm}
