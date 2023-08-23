@@ -9,7 +9,7 @@
         <label for="picture">Picture</label>
         <input class="form-control" type="url" id="picture" minlength="3" maxlength="200" v-model="editable.picture">
       </div>
-      <button type="submit">Update</button>
+      <button class="btn back-button mt-1" type="submit">Update</button>
   </form>
 </template>
 
@@ -33,6 +33,7 @@ export default {
           const formData = editable.value
           await accountService.editAccount(formData)
           Modal.getOrCreateInstance('#editAccount').hide()
+          editable.value = {}
         }
         catch (error)
         {

@@ -4,7 +4,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12 m-auto">
-          <div class="about text-center">
+          <div class="about text-center mt-3">
             <h1 class="mb-3">Welcome {{ account.name }}</h1>
             <img class="avatar mb-3" :src="account.picture" alt="" />
             <p>{{ account.email }}</p>
