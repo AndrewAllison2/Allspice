@@ -59,6 +59,10 @@ SELECT * FROM favorites;
     WHERE fav.AccountId = `AccountId`;
 
     SELECT * FROM favorites;
+
+    DELETE FROM favorites WHERE id = 3 LIMIT 1
+
+    SELECT * FROM favorites WHERE id = 2
     
 
 

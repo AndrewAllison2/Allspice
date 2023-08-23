@@ -17,7 +17,10 @@ class FavoritesService {
     logger.log(res.data)
     const favIndex = AppState.favorites.findIndex(i => i.id == favoriteId)
     AppState.favorites.splice(favIndex, 1)
+    const myFavIndex = AppState.myFavorites.findIndex(i => i.id == favoriteId)
+    AppState.myFavorites.splice(myFavIndex, 1)
   }
+
 }
 
 

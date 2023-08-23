@@ -11,7 +11,7 @@
       <div class="col-8 p-3">
         <div class="d-flex justify-content-end">
           <div class="favorite-elem text-center">
-            <i v-if="isFavorite == true" class="mdi mdi-heart fs-2 selectable" title="Remove from favorites" @click="removeFavorite(activeRecipe.id)"></i>
+            <i v-if="isFavorite" class="mdi mdi-heart fs-2 selectable" title="Remove from favorites" @click="removeFavorite(activeRecipe?.id)"></i>
           <i v-else class="mdi mdi-heart-outline fs-2 selectable" title="Add to favorites" @click="createFavorite()"></i>
         </div>
         <div class="align-items-center">
@@ -95,13 +95,16 @@ export default {
   setup() {
 
     function _computeFavorite() {
-      let activeFav = AppState.favorites.find(f => f.recipeId == AppState.activeRecipe?.id)
-            if (activeFav) {
-              return true
-            } return false
+      const foundFav = AppState.favorites?.find(f => f?.recipeId == AppState.activeRecipe?.id)
+      if (foundFav?.accountId == AppState.account?.id) {
+        return foundFav
+      } return null
     }
 
-    watchEffect(()=> _computeFavorite())
+    watchEffect(() => {
+      _computeFavorite()
+    })
+  
 
 
     
@@ -113,10 +116,10 @@ export default {
           favorites: computed(() => AppState.favorites),
           account: computed(() => AppState.account),
           isFavorite: computed(() => {
-            let activeFav = AppState.favorites.find(f => f.recipeId == AppState.activeRecipe?.id)
-            if (activeFav) {
-              return true
-            } return false
+            let fav = AppState.myFavorites?.find(f => f?.recipeId == AppState.activeRecipe?.id)
+            if (fav) {
+              return fav
+            } return null
           }),
 
 
@@ -144,7 +147,7 @@ export default {
               if (!await Pop.confirm('Unfavorite this Recipe?')) {
                 return
               }
-              const favorite = AppState.favorites.find(f => f.recipeId == recipeId)
+              const favorite = AppState.myFavorites.find(f => f.recipeId == recipeId)
               await favoritesService.removeFavorite(favorite.id)
               Pop.toast(`${this.activeRecipe.title} has been removed from your favorites!`)
             }

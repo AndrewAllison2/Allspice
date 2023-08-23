@@ -68,5 +68,6 @@ public class FavoritesRepository
     string sql = "DELETE FROM favorites WHERE id = @favoriteId LIMIT 1";
 
     _db.Execute(sql, new { favoriteId });
+    
     }
 }

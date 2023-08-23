@@ -28,7 +28,7 @@ public class FavoritesService
 
     if (favorite == null)
     {
-      throw new Exception("Something went wrong");
+      throw new Exception("No favorite by that ID");
     }
     return favorite;
     }
