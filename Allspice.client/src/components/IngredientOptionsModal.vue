@@ -10,11 +10,11 @@
         <div class="d-flex flex-column justify-content-between align-items-center p-1">
 
           <div class="mb-3">
-            <button class="btn btn-primary" data-bs-target="#editIngredientModal" data-bs-toggle="modal">Edit</button>
+            <button class="btn edit-button" data-bs-target="#editIngredientModal" data-bs-toggle="modal">Edit</button>
           </div>
 
           <div class="mb-3">
-            <button class="btn btn-danger" @click="removeIngredient()">Delete</button>
+            <button class="btn delete-button" @click="removeIngredient()">Delete</button>
           </div>
 
           <div class="mb3">
@@ -81,5 +81,25 @@ export default {
 
 .modal-elem{
   box-shadow: 2px 2px #ffffff;
+}
+
+.edit-button{
+  color: white;
+  background-color: rgb(29, 119, 255);
+}
+.edit-button:hover{
+    border: 2px solid rgb(29, 119, 255);
+    color: rgb(29, 119, 255);
+    background-color: white;
+}
+
+.delete-button{
+  color: white;
+  background-color: red;
+}
+.delete-button:hover{
+  border: 2px solid red;
+  color: red;
+  background-color: white;
 }
 </style>
