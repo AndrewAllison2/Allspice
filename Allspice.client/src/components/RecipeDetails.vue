@@ -133,7 +133,6 @@ export default {
               const formData = {recipeId: recipeId}
               // const accountId = AppState.account.id
                 await favoritesService.createFavorite(formData)
-                await accountService.getMyFavorites
               Pop.toast(`${activeRecipe.title} has been added to your favorites!`)
               }
               catch (error)
@@ -148,8 +147,8 @@ export default {
               if (!await Pop.confirm('Unfavorite this Recipe?')) {
                 return
               }
-              const favorite = AppState.myFavorites.find(f => f.id == recipeId && f.accountId == AppState.account.id)
-              const favoriteId = favorite.id
+              const favorite = AppState.myFavorites.find(f => f.recipeId == recipeId && f.accountId == AppState.account.id)
+              const favoriteId = favorite.favoriteId
               logger.log('Fav to delete', favoriteId)
               await favoritesService.removeFavorite(favoriteId)
               Pop.toast(`${this.activeRecipe.title} has been removed from your favorites!`)
