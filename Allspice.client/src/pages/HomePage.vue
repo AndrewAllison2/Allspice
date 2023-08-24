@@ -8,6 +8,11 @@
           <div class="d-flex justify-content-end align-items-center">
 
             <div class="me-3 mt-1">
+              <!-- <div>
+                <h2 class="selectable">All</h2>
+                <h2 class="selectable">Likes</h2>
+
+              </div> -->
               <button class="btn back-button" data-bs-target="#createRecipe" data-bs-toggle="modal">
                 <i class="mdi mdi-plus fs-4" > Add Recipe</i>
               </button>
@@ -74,6 +79,10 @@ export default {
       }
     }
 
+    function computeRecipes(sortBy) {
+        recipesService.computeRecipes(sortBy.value)
+      }
+
     // async function getMyFavorites() {
     //   try {
     //     await accountService.getMyFavorites()
@@ -92,8 +101,8 @@ export default {
     watchEffect(() => {
         if (AppState.account?.id) {
           accountService.getMyFavorites()
-          
-        }return
+      } return{},
+        computeRecipes
       })
 
     return {
@@ -107,7 +116,8 @@ export default {
         }
       }),
     
-        filterBy,
+      filterBy,
+        sortBy
 
 
       };
@@ -119,7 +129,7 @@ export default {
 
 <style scoped lang="scss">
 .hero-img{
-  background-image: url(https://images.unsplash.com/photo-1466637574441-749b8f19452f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNvb2tpbmclMjBzdGF0aW9ufGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60);
+  background-image: url(https://www.shutterstock.com/image-photo/healthy-clean-food-cooking-eating-260nw-1847997298.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

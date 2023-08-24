@@ -34,6 +34,16 @@ class RecipesService {
     const res = await api.post('api/recipes', formData)
     AppState.recipes.push(new Recipe(res.data))
   }
+
+  computeRecipes(value) {
+    if (value == '') {
+      return AppState.recipes
+    }
+    if (value == 'likes') {
+      const likedRecipes = AppState.recipes.filter(r => r.id == AppState.myFavorites.id)
+      AppState.recipes = likedRecipes
+    }
+  }
 }
 
 export const recipesService = new RecipesService()
