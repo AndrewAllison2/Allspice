@@ -15,7 +15,7 @@
       <div class="row">
         <div class="col-2 m-auto text-center d-flex flex-column">
   
-          <button class="btn btn-info mb-4" data-bs-target="#editAccount" data-bs-toggle="modal">Edit Account</button>
+          <button class="btn edit-button mb-4" data-bs-target="#editAccount" data-bs-toggle="modal">Edit Account</button>
           <router-link :to="{name: 'Home'}">
             <button class="btn back-button">Home</button>
           </router-link>
@@ -58,5 +58,15 @@ button{
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+}
+
+.edit-button{
+background-color: rgb(32, 162, 162);
+color: white;
+}
+.edit-button:hover{
+  background-color: white;
+  color: rgb(32, 162, 162);
+  border: 2px solid rgb(32, 162, 162);
 }
 </style>

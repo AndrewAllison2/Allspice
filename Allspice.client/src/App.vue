@@ -76,4 +76,10 @@ export default {
   background-color: #527360;
   color: white;
 }
+
+.back-button:hover{
+  border: 2px solid #527360;
+  color: #527360;
+  background-color: white;
+}
 </style>
